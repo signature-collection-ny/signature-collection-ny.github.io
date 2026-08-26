@@ -26,4 +26,70 @@ function decorateHairColors(root=document){root.querySelectorAll('.chip').forEac
 function decorateDescriptions(root=document){root.querySelectorAll('.card').forEach(card=>{if(card.querySelector('.industry-desc'))return;const name=card.querySelector('.name')?.textContent.trim(),x=DATA.find(v=>v.name===name);if(x){const d=document.createElement('div');d.className='industry-desc';d.textContent=x.description;card.querySelector('.info')?.after(d)}});root.querySelectorAll('.details').forEach(box=>{if(box.querySelector('.product-desc'))return;const name=box.querySelector('h2')?.textContent.trim(),x=DATA.find(v=>v.name===name);if(x){const d=document.createElement('p');d.className='product-desc';d.textContent=x.description;box.querySelector('h2')?.after(d)}})}
 function cleanEmptyShown(root=document){root.querySelectorAll('.details .row').forEach(row=>{if(/NOT SPECIFIED|\uD45C\uAE30 \uC5C6\uC74C/.test(row.textContent))row.remove()})}
 new MutationObserver(()=>{decorateHairColors();decorateDescriptions();cleanEmptyShown()}).observe(document.body,{childList:true,subtree:true});decorateHairColors();decorateDescriptions();cleanEmptyShown();
+</script>
+<style id="color-zoom-styles">
+.chip.hair-swatch{cursor:zoom-in;user-select:none}.chip.hair-swatch:focus-visible{outline:2px solid #171511;outline-offset:2px}.color-zoom{position:fixed;inset:0;z-index:120;display:none;align-items:center;justify-content:center;padding:22px;background:#111b;backdrop-filter:blur(7px)}.color-zoom.show{display:flex}.color-zoom-card{width:min(360px,100%);background:#faf8f3;border:1px solid #b8aa92;box-shadow:0 24px 70px #0007;padding:26px;position:relative;text-align:center}.color-zoom-close{position:absolute;right:10px;top:10px;width:38px;height:38px;border:1px solid #9d968b;background:#fff;color:#111;font-size:24px;line-height:1;cursor:pointer}.color-zoom-label{margin:0 45px 18px 0;text-align:left;font-size:9px;letter-spacing:.18em;color:#74664f}.color-zoom-swatch{width:min(220px,68vw);aspect-ratio:1;margin:0 auto 18px;background:var(--hair);border:1px solid #777;box-shadow:inset 0 0 0 2px #ffffff66,0 12px 28px #0002}.color-zoom-code{font:400 30px/1.1 Didot,'Times New Roman',serif;overflow-wrap:anywhere}.color-zoom-note{margin:11px 0 0;color:#777;font-size:10px;line-height:1.5}@media(max-width:420px){.color-zoom-card{padding:22px 18px}.color-zoom-swatch{width:min(200px,64vw)}}
+</style>
+<script>
+(function(){
+  let lastColorTrigger=null;
+  function ensureColorZoom(){
+    let modal=document.getElementById('colorZoom');
+    if(modal)return modal;
+    modal=document.createElement('div');
+    modal.id='colorZoom';
+    modal.className='color-zoom';
+    modal.setAttribute('role','dialog');
+    modal.setAttribute('aria-modal','true');
+    modal.setAttribute('aria-labelledby','colorZoomCode');
+    modal.innerHTML='<div class="color-zoom-card"><button class="color-zoom-close" type="button" aria-label="Close color preview">&times;</button><div class="color-zoom-label">HAIR COLOR PREVIEW</div><div class="color-zoom-swatch" aria-hidden="true"></div><div class="color-zoom-code" id="colorZoomCode"></div><p class="color-zoom-note">Actual color may vary by screen.</p></div>';
+    document.body.appendChild(modal);
+    modal.querySelector('.color-zoom-close').addEventListener('click',closeColorZoom);
+    modal.addEventListener('click',event=>{if(event.target===modal)closeColorZoom()});
+    return modal;
+  }
+  function openColorZoom(code,trigger){
+    const modal=ensureColorZoom();
+    lastColorTrigger=trigger||null;
+    modal.querySelector('.color-zoom-swatch').style.setProperty('--hair',hairStyle(code));
+    modal.querySelector('.color-zoom-code').textContent=code;
+    modal.classList.add('show');
+    document.body.style.overflow='hidden';
+    modal.querySelector('.color-zoom-close').focus();
+  }
+  function closeColorZoom(){
+    const modal=document.getElementById('colorZoom');
+    if(!modal||!modal.classList.contains('show'))return;
+    modal.classList.remove('show');
+    document.body.style.overflow='';
+    lastColorTrigger?.focus();
+    lastColorTrigger=null;
+  }
+  function enhanceColorChips(root=document){
+    root.querySelectorAll('.chip.hair-swatch').forEach(chip=>{
+      const code=chip.textContent.trim();
+      if(!COLOR_CODES.has(code))return;
+      chip.setAttribute('role','button');
+      chip.setAttribute('tabindex','0');
+      chip.setAttribute('aria-label',`View ${code} color larger`);
+    });
+  }
+  function removeOriginalCardButtons(root=document){root.querySelectorAll('.source,#source').forEach(button=>button.remove())}
+  document.addEventListener('click',event=>{
+    const chip=event.target.closest('.chip.hair-swatch');
+    if(!chip||!COLOR_CODES.has(chip.textContent.trim()))return;
+    event.preventDefault();
+    openColorZoom(chip.textContent.trim(),chip);
+  });
+  document.addEventListener('keydown',event=>{
+    if(event.key==='Escape'){closeColorZoom();return}
+    const chip=event.target.closest?.('.chip.hair-swatch');
+    if(!chip||!COLOR_CODES.has(chip.textContent.trim())||!['Enter',' '].includes(event.key))return;
+    event.preventDefault();
+    openColorZoom(chip.textContent.trim(),chip);
+  });
+  const colorZoomObserver=new MutationObserver(()=>{enhanceColorChips();removeOriginalCardButtons()});
+  colorZoomObserver.observe(document.body,{childList:true,subtree:true});
+  ensureColorZoom();enhanceColorChips();removeOriginalCardButtons();
+})();
 </script></body></html>
