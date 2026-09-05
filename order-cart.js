@@ -13,11 +13,32 @@
   const safeQty=value=>Math.max(1,Math.min(999,Math.floor(Number(value)||1)));
 
   function fixCatalogAssetPaths(root=document){
+    const githubPages=location.hostname.toLowerCase()==="signature-collection-ny.github.io";
     const logo=root.querySelector?.(".brand-logo")||document.querySelector(".brand-logo");
-    if(logo?.getAttribute("src")==="signature-official-logo.jpg")logo.setAttribute("src","assets/brand/signature-official-logo.png");
+    if(logo){
+      const logoSrc=logo.getAttribute("src")||"";
+      if(githubPages&&logoSrc.includes("assets/brand/"))logo.setAttribute("src",logoSrc.split("/").pop().replace(/\.png$/i,".jpg"));
+      else if(!githubPages&&logoSrc==="signature-official-logo.jpg")logo.setAttribute("src","assets/brand/signature-official-logo.png");
+    }
     root.querySelectorAll?.(".card .photo img, .heroimg img").forEach(img=>{
       const src=img.getAttribute("src")||"";
-      if(!src||src.includes("assets/models/")||src.includes("assets/references/")||/^(?:data:|blob:|https?:)/i.test(src))return;
+      if(!src||/^(?:data:|blob:|https?:)/i.test(src))return;
+      if(githubPages){
+        const file=src.split("/").pop();
+        const photo=img.closest(".photo");if(photo)photo.style.display="";
+        if(src!==file)img.setAttribute("src",file);
+        if(!img.dataset.githubFallback){
+          img.dataset.githubFallback="ready";
+          img.addEventListener("error",()=>{
+            if(img.dataset.githubFallback!=="ready")return;
+            img.dataset.githubFallback="tried";
+            const current=img.getAttribute("src")||"";
+            img.setAttribute("src",/\.png$/i.test(current)?current.replace(/\.png$/i,".jpg"):current.replace(/\.jpg$/i,".png"));
+          });
+        }
+        return;
+      }
+      if(src.includes("assets/models/")||src.includes("assets/references/"))return;
       let file=src.split("/").pop();
       const folder=/-source\./i.test(file)?"references":"models";
       if(folder==="models"&&/-approved\.jpg$/i.test(file))file=file.replace(/\.jpg$/i,".png");
