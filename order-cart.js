@@ -1,6 +1,6 @@
 (()=>{
   const ORDER_EMAIL="Jae@signaturelooksinc.com";
-  const ORDER_ENDPOINT=`https://formsubmit.co/ajax/${ORDER_EMAIL}`;
+  const ORDER_ENDPOINT="https://script.google.com/macros/s/AKfycbw0o-dLKV-ZFER6yrSY1leuTjpvG3gvcE-kW3uz_nqFkGtaSsHWhqzBWpV_9eejK5bd/exec";
   const TEXT_PHONE="646-339-9472";
   const CALL_PHONE="718-786-5516";
   const CART_KEY="signatureCollectionOrderCartV1";
@@ -184,10 +184,8 @@
     const values=formValues(),body=orderText(values),subject=`Signature Collection Order Request - ${values.store}`;
     submit.disabled=true;submit.textContent="SENDING...";status.textContent="Sending your order request securely...";
     try{
-      const response=await fetch(ORDER_ENDPOINT,{method:"POST",headers:{"Content-Type":"application/json","Accept":"application/json"},body:JSON.stringify({_subject:subject,_template:"table",_captcha:"false",_honey:values._honey||"",store:values.store,buyer:values.buyer,email:values.email,phone:values.phone,address:values.address,order_details:body})});
-      const result=await response.json().catch(()=>null);
-      if(!response.ok||result?.success===false||result?.success==="false")throw new Error(result?.message||"Request failed");
-      status.textContent=`Order request sent directly to ${ORDER_EMAIL}. Signature Collection will contact you to confirm availability and the final total.`;
+      await fetch(ORDER_ENDPOINT,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify({action:"order_request",_honey:values._honey||"",store:values.store,buyer:values.buyer,email:values.email,phone:values.phone,address:values.address,notes:values.notes||"",order_details:body})});
+      status.textContent=`Order request sent directly to ${ORDER_EMAIL}. You will receive a confirmation email after Signature Collection reviews the order.`;
       sessionStorage.setItem("signatureVendorBusiness",values.store);sessionStorage.setItem("signatureVendorEmail",values.email);
     }catch(error){
       console.error("Order request delivery failed",error);status.textContent=`The order could not be sent. Please try again, or use COPY ORDER DETAILS and email ${ORDER_EMAIL}.`;
