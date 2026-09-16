@@ -7,12 +7,10 @@ DATA.unshift({"id":42,"name":"ASSIST","category":"CLASSIC","model":"42-assist-ap
 DATA.unshift({"id":43,"name":"KAKAO-1","category":"CLASSIC","model":"43-kakao-1-approved.png","reference":"43-kakao-1-source-card.png","colors":["1","1B","2","P1BB/844","P1BB/845","T1B/27ND","T1B/118","F1B/30","F4/27","F4/30","2T4/27"],"shown":"P1BB/845","features":["Breathable Thinnest Weft","Kanekalon","Toyokalon"],"description":"Shoulder-Length Tight Curl  / Full Curly Bang  / Rounded Volume"});
 const nSabrina=DATA.find(item=>item.name==='N.SABRINA');
 if(nSabrina)nSabrina.model='37-n-sabrina-natural-v2.png';
-const ONLINE_TREND_ORDER=["QUEEN","ASSIST","N.SABRINA","KAKAO-1","NEW GAYO 1","NEW FARRAH-2","ROSE","BLACK","GOLD","NAOMI-6","TOMORROW","NAOMI-7","ISABEL","JENNY","BLOSSOM","LEMON","NEW GAYO 3","AWARD","JUMP","INDRI-2","DESIGN A","DESIGN C","COCOA","BABY","S.K.957","S.K.907","GALAXY 1","S.K.911","S.K.918","S.K.977","NAOMI-1","NAOMI-2","TRACK","NEW FARRAH-1","S.K.901","S.K.909","S.K.919","SELENA","JANE","LONG SPIRIT 26\"","CURL SPIRIT 18\"","CURL SPIRIT 24\"","NAOMI-3","GALAXY 2","LONG SPIRIT 32\""];
-const ONLINE_TREND_RANK=new Map(ONLINE_TREND_ORDER.map((name,index)=>[name,index]));
-DATA.sort((a,b)=>(ONLINE_TREND_RANK.get(a.name)??999)-(ONLINE_TREND_RANK.get(b.name)??999));/* Remove the legacy corrupted Korean label below.
+DATA.sort((a,b)=>a.name.localeCompare(b.name));/* Remove the legacy corrupted Korean label below.
 T.ko.popular='온라인 인기순';
-*/T.ko.popular='\uC778\uD130\uB137 \uC778\uAE30\uC21C';
-T.en.popular='ONLINE TREND ORDER';
+*/T.ko.popular='\uCEF4\uB809\uC158 \uBCF4\uAE30';
+T.en.popular='EXPLORE THE COLLECTION';
 render();
 </script><script>
 const PRICES={"INDRI-2":"15.95","QUEEN":"22.95","KAKAO-1":"17.95","ASSIST":"15.50","TRACK":"27.95","GALAXY 1":"22.95","GALAXY 2":"24.95","NEW FARRAH-2":"34.95","NEW FARRAH-1":"34.95","ISABEL":"25.95","N.SABRINA":"32.95","LONG SPIRIT 32\"":"35.95","LONG SPIRIT 26\"":"32.95","CURL SPIRIT 24\"":"31.95","CURL SPIRIT 18\"":"29.95","GOLD":"34.95","BLACK":"34.95","NAOMI-1":"24.50","NAOMI-2":"25.50","NAOMI-3":"27.95","NAOMI-6":"24.95","NAOMI-7":"24.95","SELENA":"22.95","JENNY":"34.95","JANE":"34.95","S.K.901":"19.50","AWARD":"18.50","S.K.977":"19.95","NEW GAYO 3":"25.50","NEW GAYO 1":"23.50","ROSE":"34.95","LEMON":"16.95","TOMORROW":"27.95","S.K.909":"18.95","BLOSSOM":"16.95","COCOA":"15.50","S.K.911":"19.95","DESIGN A":"14.95","S.K.918":"19.95","DESIGN C":"14.95","S.K.907":"18.95","S.K.957":"19.95","S.K.919":"20.95","BABY":"13.95","JUMP":"15.25"};
@@ -104,49 +102,55 @@ new MutationObserver(()=>{decorateHairColors();decorateDescriptions();cleanEmpty
   colorZoomObserver.observe(document.body,{childList:true,subtree:true});
   ensureColorZoom();enhanceColorChips();removeOriginalCardButtons();
 })();
-</script><style id="trend-batch-styles">
-.controls .filters{display:none}.trend-groups{max-width:1240px;margin:0 auto 20px;padding:0 24px}.trend-groups-label{display:flex;align-items:end;justify-content:space-between;gap:12px;margin-bottom:10px}.trend-groups-label strong{font-size:12px;letter-spacing:.14em}.trend-groups-label span{font-size:9px;color:#746b5d;letter-spacing:.08em}.trend-group-tabs{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px}.trend-group-tab{min-height:54px;border:1px solid #cfc6b8;background:#fff;color:#171511;padding:8px 10px;text-align:left;cursor:pointer}.trend-group-tab span,.trend-group-tab small{display:block}.trend-group-tab span{font-size:11px;font-weight:700;letter-spacing:.08em}.trend-group-tab small{margin-top:5px;font-size:8px;color:#776c5c;letter-spacing:.08em}.trend-group-tab.on{border-color:#171511;background:#171511;color:#fff}.trend-group-tab.on small{color:#d7c8ad}.photo.product-open{width:100%;border:0;padding:0;background:transparent;display:block;cursor:pointer;text-align:inherit}.photo.product-open:focus-visible{outline:3px solid #ad8b56;outline-offset:3px}.trend-pager{max-width:1240px;margin:28px auto 0;padding:0 24px;display:grid;grid-template-columns:1fr 1fr;gap:10px}.trend-pager button{min-height:48px;border:1px solid #171511;background:#fff;color:#171511;padding:10px 12px;font-size:9px;font-weight:700;letter-spacing:.12em;cursor:pointer}.trend-pager button:last-child{background:#171511;color:#fff}.trend-pager button:disabled{visibility:hidden}.trend-search-note{display:none}.trend-groups.search-mode .trend-group-tabs{display:none}.trend-groups.search-mode .trend-search-note{display:block;border:1px solid #cfc6b8;background:#fff;padding:13px 14px;font-size:10px;letter-spacing:.1em}.count{letter-spacing:.1em}@media(max-width:680px){.trend-groups{padding:0 14px;margin-bottom:14px}.trend-group-tabs{display:flex;overflow-x:auto;gap:7px;padding-bottom:4px;scroll-snap-type:x mandatory;scrollbar-width:none}.trend-group-tabs::-webkit-scrollbar{display:none}.trend-group-tab{flex:0 0 112px;scroll-snap-align:start;min-height:58px}.trend-groups-label{align-items:start}.trend-groups-label span{max-width:150px;text-align:right;line-height:1.45}.trend-pager{padding:0 14px;margin-top:20px}.trend-pager button{min-height:52px}.grid{scroll-margin-top:12px}}
+</script><style id="style-browser-styles">
+.controls .filters{display:none}.style-groups{max-width:1240px;margin:0 auto 20px;padding:0 24px}.style-groups-label{display:flex;align-items:end;justify-content:space-between;gap:12px;margin-bottom:10px}.style-groups-label strong{font-size:12px;letter-spacing:.14em}.style-groups-label span{font-size:9px;color:#746b5d;letter-spacing:.08em}.style-group-tabs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}.style-group-tab{min-height:58px;border:1px solid #cfc6b8;background:#fff;color:#171511;padding:9px 10px;text-align:left;cursor:pointer}.style-group-tab span,.style-group-tab small{display:block}.style-group-tab span{font-size:10px;font-weight:700;letter-spacing:.07em}.style-group-tab small{margin-top:5px;font-size:8px;color:#776c5c;letter-spacing:.08em}.style-group-tab.on{border-color:#171511;background:#171511;color:#fff}.style-group-tab.on small{color:#d7c8ad}.style-pager{max-width:1240px;margin:28px auto 0;padding:0 24px;display:grid;grid-template-columns:1fr 1fr;gap:10px}.style-pager button{min-height:48px;border:1px solid #171511;background:#fff;color:#171511;padding:10px 12px;font-size:9px;font-weight:700;letter-spacing:.12em;cursor:pointer}.style-pager button:last-child{background:#171511;color:#fff}.style-pager button:disabled{visibility:hidden}.style-search-note{display:none}.style-groups.search-mode .style-group-tabs{display:none}.style-groups.search-mode .style-search-note{display:block;border:1px solid #cfc6b8;background:#fff;padding:13px 14px;font-size:10px;letter-spacing:.1em}.count{letter-spacing:.1em}.grid{grid-template-columns:repeat(5,minmax(0,1fr));gap:12px}.image-tile{appearance:none;display:flex;min-width:0;flex-direction:column;border:1px solid #d8d0c4;background:#fff;color:#171511;padding:0;text-align:left;cursor:pointer;overflow:hidden}.image-tile:focus-visible{outline:3px solid #ad8b56;outline-offset:3px}.image-tile-photo{display:block;width:100%;aspect-ratio:4/5;background:#f1eee8;overflow:hidden}.image-tile-photo img{display:block;width:100%;height:100%;object-fit:contain;object-position:center}.image-tile-copy{display:block;padding:10px 10px 11px}.image-tile-copy strong{display:block;font-size:14px;font-weight:600;line-height:1.15;overflow-wrap:anywhere}.image-tile-copy small{display:block;margin-top:5px;font-size:7px;letter-spacing:.12em;color:#796e5f}@media(max-width:680px){.style-groups{padding:0 14px;margin-bottom:14px}.style-group-tabs{display:flex;overflow-x:auto;gap:7px;padding-bottom:4px;scroll-snap-type:x mandatory;scrollbar-width:none}.style-group-tabs::-webkit-scrollbar{display:none}.style-group-tab{flex:0 0 142px;scroll-snap-align:start;min-height:60px}.style-groups-label{align-items:start}.style-groups-label span{max-width:150px;text-align:right;line-height:1.45}.style-pager{padding:0 14px;margin-top:20px}.style-pager button{min-height:52px}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;padding-left:14px;padding-right:14px;scroll-margin-top:12px}.image-tile-copy{padding:9px 8px 10px}.image-tile-copy strong{font-size:12px}}
 </style><script>
-const TREND_PAGE_SIZE=10;
-const trendImageStyle=document.createElement('style');
-trendImageStyle.textContent='.grid{grid-template-columns:repeat(5,minmax(0,1fr));gap:12px}.image-tile{appearance:none;display:flex;min-width:0;flex-direction:column;border:1px solid #d8d0c4;background:#fff;color:#171511;padding:0;text-align:left;cursor:pointer;overflow:hidden}.image-tile:focus-visible{outline:3px solid #ad8b56;outline-offset:3px}.image-tile-photo{display:block;width:100%;aspect-ratio:4/5;background:#f1eee8;overflow:hidden}.image-tile-photo img{display:block;width:100%;height:100%;object-fit:contain;object-position:center}.image-tile-copy{display:grid;grid-template-columns:1fr auto;align-items:end;gap:2px 8px;padding:10px 10px 11px}.image-tile-copy strong{grid-column:1/2;font-size:14px;font-weight:600;line-height:1.15;overflow-wrap:anywhere}.image-tile-copy small{grid-column:1/2;font-size:7px;letter-spacing:.12em;color:#796e5f}.image-tile-rank{grid-column:2/3;grid-row:1/3;align-self:center;font-size:8px;font-weight:700;letter-spacing:.08em;color:#8d6d3d;white-space:nowrap}@media(max-width:680px){.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;padding-left:14px;padding-right:14px}.image-tile-copy{padding:9px 8px 10px}.image-tile-copy strong{font-size:12px}.image-tile-rank{font-size:7px}}';
-document.head.appendChild(trendImageStyle);
-let trendPage=0;
-const trendPageCount=Math.ceil(DATA.length/TREND_PAGE_SIZE);
-const trendGroups=document.createElement('section');
-trendGroups.id='trendGroups';
-trendGroups.className='trend-groups';
-trendGroups.setAttribute('aria-label','Online trend groups');
-trendGroups.innerHTML='<div class="trend-groups-label"><strong>ONLINE TREND GROUPS</strong><span>10 STYLES PER GROUP</span></div><div class="trend-group-tabs" role="tablist"></div><div class="trend-search-note">SEARCHING ALL 45 STYLES</div>';
-document.getElementById('count').after(trendGroups);
-const trendPager=document.createElement('nav');
-trendPager.id='trendPager';
-trendPager.className='trend-pager';
-trendPager.setAttribute('aria-label','Trend group pages');
-document.getElementById('grid').after(trendPager);
-function trendRange(page){const start=page*TREND_PAGE_SIZE+1,end=Math.min(DATA.length,start+TREND_PAGE_SIZE-1);return{start,end}}
-function showTrendPage(page,{scroll=true}={}){trendPage=Math.max(0,Math.min(trendPageCount-1,page));document.getElementById('q').value='';active='ALL';render();if(scroll)trendGroups.scrollIntoView({behavior:'smooth',block:'start'})}
-function renderTrendNavigation(searching=false){
-  trendGroups.classList.toggle('search-mode',searching);
-  const tabs=trendGroups.querySelector('.trend-group-tabs');
-  tabs.innerHTML=Array.from({length:trendPageCount},(_,page)=>{const range=trendRange(page);return `<button class="trend-group-tab ${page===trendPage?'on':''}" type="button" role="tab" aria-selected="${page===trendPage}" data-trend-page="${page}"><span>${range.start}-${range.end}</span><small>${page===0?'TOP 10':`TREND ${range.start}-${range.end}`}</small></button>`}).join('');
-  tabs.querySelectorAll('button').forEach(button=>button.onclick=()=>showTrendPage(+button.dataset.trendPage));
-  if(searching){trendPager.innerHTML='';return}
-  const previous=trendRange(Math.max(0,trendPage-1)),next=trendRange(Math.min(trendPageCount-1,trendPage+1));
-  trendPager.innerHTML=`<button type="button" ${trendPage===0?'disabled':''} data-page="${trendPage-1}">PREVIOUS ${previous.start}-${previous.end}</button><button type="button" ${trendPage===trendPageCount-1?'disabled':''} data-page="${trendPage+1}">NEXT ${next.start}-${next.end}</button>`;
-  trendPager.querySelectorAll('button:not([disabled])').forEach(button=>button.onclick=()=>showTrendPage(+button.dataset.page));
+const STYLE_PAGE_SIZE=10;
+const STYLE_GROUPS=[
+  {key:'CURLS_WAVES',label:'CURLS & WAVES'},
+  {key:'STRAIGHT',label:'STRAIGHT STYLES'},
+  {key:'SHORT_PIXIE',label:'SHORT & PIXIE'},
+  {key:'BOB_SHOULDER',label:'BOB & SHOULDER'}
+];
+function catalogStyleGroup(item){const description=(item.description||'').toUpperCase();if(/PIXIE|SHORT|TAPERED/.test(description))return'SHORT_PIXIE';if(/BOB|SHOULDER|MEDIUM/.test(description))return'BOB_SHOULDER';if(/STRAIGHT/.test(description))return'STRAIGHT';return'CURLS_WAVES'}
+function styleItems(key){return DATA.filter(item=>catalogStyleGroup(item)===key).sort((a,b)=>a.name.localeCompare(b.name))}
+let selectedStyleKey='CURLS_WAVES',stylePage=0;
+const styleGroups=document.createElement('section');
+styleGroups.id='styleGroups';
+styleGroups.className='style-groups';
+styleGroups.setAttribute('aria-label','Shop by hairstyle');
+styleGroups.innerHTML='<div class="style-groups-label"><strong>SHOP BY STYLE</strong><span>UP TO 10 STYLES PER PAGE</span></div><div class="style-group-tabs" role="tablist"></div><div class="style-search-note">SEARCHING ALL 45 STYLES</div>';
+document.getElementById('count').after(styleGroups);
+const stylePager=document.createElement('nav');
+stylePager.id='stylePager';
+stylePager.className='style-pager';
+stylePager.setAttribute('aria-label','Style category pages');
+document.getElementById('grid').after(stylePager);
+function styleRange(page,total){const start=page*STYLE_PAGE_SIZE+1,end=Math.min(total,start+STYLE_PAGE_SIZE-1);return{start,end}}
+function showStyleGroup(key,{scroll=true}={}){selectedStyleKey=key;stylePage=0;document.getElementById('q').value='';active='ALL';render();if(scroll)styleGroups.scrollIntoView({behavior:'smooth',block:'start'})}
+function showStylePage(page,{scroll=true}={}){const total=styleItems(selectedStyleKey).length,pageCount=Math.max(1,Math.ceil(total/STYLE_PAGE_SIZE));stylePage=Math.max(0,Math.min(pageCount-1,page));render();if(scroll)styleGroups.scrollIntoView({behavior:'smooth',block:'start'})}
+function renderStyleNavigation(searching=false){
+  styleGroups.classList.toggle('search-mode',searching);
+  const tabs=styleGroups.querySelector('.style-group-tabs');
+  tabs.innerHTML=STYLE_GROUPS.map(group=>{const total=styleItems(group.key).length;return `<button class="style-group-tab ${group.key===selectedStyleKey?'on':''}" type="button" role="tab" aria-selected="${group.key===selectedStyleKey}" data-style-key="${group.key}"><span>${group.label}</span><small>${total} STYLES</small></button>`}).join('');
+  tabs.querySelectorAll('button').forEach(button=>button.onclick=()=>showStyleGroup(button.dataset.styleKey));
+  if(searching){stylePager.innerHTML='';return}
+  const items=styleItems(selectedStyleKey),pageCount=Math.max(1,Math.ceil(items.length/STYLE_PAGE_SIZE));
+  if(pageCount===1){stylePager.innerHTML='';return}
+  const previous=styleRange(Math.max(0,stylePage-1),items.length),next=styleRange(Math.min(pageCount-1,stylePage+1),items.length);
+  stylePager.innerHTML=`<button type="button" ${stylePage===0?'disabled':''} data-page="${stylePage-1}">PREVIOUS ${previous.start}-${previous.end}</button><button type="button" ${stylePage===pageCount-1?'disabled':''} data-page="${stylePage+1}">NEXT ${next.start}-${next.end}</button>`;
+  stylePager.querySelectorAll('button:not([disabled])').forEach(button=>button.onclick=()=>showStylePage(+button.dataset.page));
 }
 render=function(){
   const query=document.getElementById('q').value.trim().toLowerCase();
-  const matches=DATA.filter(item=>[item.name,item.category,item.shown,...item.colors,...item.features].join(' ').toLowerCase().includes(query));
-  const searching=query.length>0;
-  const pageItems=searching?matches:DATA.slice(trendPage*TREND_PAGE_SIZE,(trendPage+1)*TREND_PAGE_SIZE);
-  const range=trendRange(trendPage);
-  document.getElementById('count').textContent=searching?`SEARCH RESULTS - ${matches.length} STYLES`:`ONLINE TREND ORDER - ${range.start}-${range.end} OF ${DATA.length}`;
-  document.getElementById('grid').innerHTML=pageItems.map(item=>{const rank=DATA.indexOf(item)+1;return `<button class="image-tile product-open" type="button" data-id="${item.id}" aria-label="View ${item.name} details"><span class="image-tile-photo"><img src="${item.model}" loading="lazy" alt="${item.name}" onerror="this.closest('.image-tile').style.display='none'"></span><span class="image-tile-copy"><strong>${item.name}</strong><small>${item.category}</small><span class="image-tile-rank">RANK ${String(rank).padStart(2,'0')}</span></span></button>`}).join('');
+  const matches=DATA.filter(item=>[item.name,item.category,item.description,item.shown,...item.colors,...item.features].join(' ').toLowerCase().includes(query));
+  const searching=query.length>0,group=STYLE_GROUPS.find(item=>item.key===selectedStyleKey),items=styleItems(selectedStyleKey);
+  const pageItems=searching?matches:items.slice(stylePage*STYLE_PAGE_SIZE,(stylePage+1)*STYLE_PAGE_SIZE),range=styleRange(stylePage,items.length);
+  document.getElementById('count').textContent=searching?`SEARCH RESULTS - ${matches.length} STYLES`:`${group.label} - ${range.start}-${range.end} OF ${items.length}`;
+  document.getElementById('grid').innerHTML=pageItems.map(item=>`<button class="image-tile product-open" type="button" data-id="${item.id}" aria-label="View ${item.name} details"><span class="image-tile-photo"><img src="${item.model}" loading="lazy" alt="${item.name}" onerror="this.closest('.image-tile').style.display='none'"></span><span class="image-tile-copy"><strong>${item.name}</strong><small>${item.category}</small></span></button>`).join('');
   document.querySelectorAll('.image-tile').forEach(button=>button.onclick=()=>openItem(+button.dataset.id));
-  renderTrendNavigation(searching);
+  renderStyleNavigation(searching);
 };
-document.getElementById('q').oninput=render;
+document.getElementById('q').oninput=()=>{stylePage=0;render()};
 render();
 </script><link rel="stylesheet" href="order-cart.css"><script src="order-cart.js"></script><style id="signature-hermes-type">:root{--signature-display:"Gill Sans","Trebuchet MS",Arial,sans-serif}body,.logo,.logo small,h1,.name,.details h2,.vendor-gate-card h2,.price-request-card h2,.industry-desc,.product-desc,.more,.source,.vendor-auth-btn{font-family:var(--signature-display);font-style:normal}.logo,h1,.name,.details h2,.vendor-gate-card h2,.price-request-card h2{letter-spacing:-.015em}.logo{letter-spacing:.13em}.name,.details h2{font-weight:400}.header-brand-lockup{display:flex;align-items:center;gap:9px}.header-brand-copy{font-family:var(--signature-display);line-height:1;text-align:center}.header-brand-copy span{display:block;font-size:22px;font-weight:600;letter-spacing:.15em;padding-left:.15em}.header-brand-copy small{display:flex;align-items:center;gap:6px;margin-top:6px;font-size:7px;font-weight:600;letter-spacing:.42em;padding-left:.42em;color:var(--gold)}.header-brand-copy small:before,.header-brand-copy small:after{content:"";flex:1;height:1px;background:var(--gold)}.header-official-emblem{position:relative;width:33px;height:55px;overflow:hidden}.header-official-emblem img{position:absolute;width:492%;max-width:none;height:auto;left:-357%;top:-29%}@media(max-width:420px){.header-brand-copy span{font-size:18px}.header-brand-copy small{font-size:6px}.header-official-emblem{width:27px;height:46px}}</style><script>(()=>{const logo=document.querySelector('.brand-logo');if(!logo)return;const lockup=document.createElement('div');lockup.className='header-brand-lockup';lockup.setAttribute('aria-label','Signature Collection');lockup.innerHTML='<div class="header-brand-copy"><span>SIGNATURE</span><small>COLLECTION</small></div><div class="header-official-emblem" aria-hidden="true"><img src="signature-official-logo.jpg" alt=""></div>';logo.replaceWith(lockup)})()</script></body></html>
