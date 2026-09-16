@@ -104,4 +104,46 @@ new MutationObserver(()=>{decorateHairColors();decorateDescriptions();cleanEmpty
   colorZoomObserver.observe(document.body,{childList:true,subtree:true});
   ensureColorZoom();enhanceColorChips();removeOriginalCardButtons();
 })();
+</script><style id="trend-batch-styles">
+.controls .filters{display:none}.trend-groups{max-width:1240px;margin:0 auto 20px;padding:0 24px}.trend-groups-label{display:flex;align-items:end;justify-content:space-between;gap:12px;margin-bottom:10px}.trend-groups-label strong{font-size:12px;letter-spacing:.14em}.trend-groups-label span{font-size:9px;color:#746b5d;letter-spacing:.08em}.trend-group-tabs{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px}.trend-group-tab{min-height:54px;border:1px solid #cfc6b8;background:#fff;color:#171511;padding:8px 10px;text-align:left;cursor:pointer}.trend-group-tab span,.trend-group-tab small{display:block}.trend-group-tab span{font-size:11px;font-weight:700;letter-spacing:.08em}.trend-group-tab small{margin-top:5px;font-size:8px;color:#776c5c;letter-spacing:.08em}.trend-group-tab.on{border-color:#171511;background:#171511;color:#fff}.trend-group-tab.on small{color:#d7c8ad}.photo.product-open{width:100%;border:0;padding:0;background:transparent;display:block;cursor:pointer;text-align:inherit}.photo.product-open:focus-visible{outline:3px solid #ad8b56;outline-offset:3px}.trend-pager{max-width:1240px;margin:28px auto 0;padding:0 24px;display:grid;grid-template-columns:1fr 1fr;gap:10px}.trend-pager button{min-height:48px;border:1px solid #171511;background:#fff;color:#171511;padding:10px 12px;font-size:9px;font-weight:700;letter-spacing:.12em;cursor:pointer}.trend-pager button:last-child{background:#171511;color:#fff}.trend-pager button:disabled{visibility:hidden}.trend-search-note{display:none}.trend-groups.search-mode .trend-group-tabs{display:none}.trend-groups.search-mode .trend-search-note{display:block;border:1px solid #cfc6b8;background:#fff;padding:13px 14px;font-size:10px;letter-spacing:.1em}.count{letter-spacing:.1em}@media(max-width:680px){.trend-groups{padding:0 14px;margin-bottom:14px}.trend-group-tabs{display:flex;overflow-x:auto;gap:7px;padding-bottom:4px;scroll-snap-type:x mandatory;scrollbar-width:none}.trend-group-tabs::-webkit-scrollbar{display:none}.trend-group-tab{flex:0 0 112px;scroll-snap-align:start;min-height:58px}.trend-groups-label{align-items:start}.trend-groups-label span{max-width:150px;text-align:right;line-height:1.45}.trend-pager{padding:0 14px;margin-top:20px}.trend-pager button{min-height:52px}.grid{scroll-margin-top:12px}}
+</style><script>
+const TREND_PAGE_SIZE=10;
+let trendPage=0;
+const trendPageCount=Math.ceil(DATA.length/TREND_PAGE_SIZE);
+const trendGroups=document.createElement('section');
+trendGroups.id='trendGroups';
+trendGroups.className='trend-groups';
+trendGroups.setAttribute('aria-label','Online trend groups');
+trendGroups.innerHTML='<div class="trend-groups-label"><strong>ONLINE TREND GROUPS</strong><span>10 STYLES PER GROUP</span></div><div class="trend-group-tabs" role="tablist"></div><div class="trend-search-note">SEARCHING ALL 45 STYLES</div>';
+document.getElementById('count').after(trendGroups);
+const trendPager=document.createElement('nav');
+trendPager.id='trendPager';
+trendPager.className='trend-pager';
+trendPager.setAttribute('aria-label','Trend group pages');
+document.getElementById('grid').after(trendPager);
+function trendRange(page){const start=page*TREND_PAGE_SIZE+1,end=Math.min(DATA.length,start+TREND_PAGE_SIZE-1);return{start,end}}
+function showTrendPage(page,{scroll=true}={}){trendPage=Math.max(0,Math.min(trendPageCount-1,page));document.getElementById('q').value='';active='ALL';render();if(scroll)trendGroups.scrollIntoView({behavior:'smooth',block:'start'})}
+function renderTrendNavigation(searching=false){
+  trendGroups.classList.toggle('search-mode',searching);
+  const tabs=trendGroups.querySelector('.trend-group-tabs');
+  tabs.innerHTML=Array.from({length:trendPageCount},(_,page)=>{const range=trendRange(page);return `<button class="trend-group-tab ${page===trendPage?'on':''}" type="button" role="tab" aria-selected="${page===trendPage}" data-trend-page="${page}"><span>${range.start}-${range.end}</span><small>${page===0?'TOP 10':`TREND ${range.start}-${range.end}`}</small></button>`}).join('');
+  tabs.querySelectorAll('button').forEach(button=>button.onclick=()=>showTrendPage(+button.dataset.trendPage));
+  if(searching){trendPager.innerHTML='';return}
+  const previous=trendRange(Math.max(0,trendPage-1)),next=trendRange(Math.min(trendPageCount-1,trendPage+1));
+  trendPager.innerHTML=`<button type="button" ${trendPage===0?'disabled':''} data-page="${trendPage-1}">PREVIOUS ${previous.start}-${previous.end}</button><button type="button" ${trendPage===trendPageCount-1?'disabled':''} data-page="${trendPage+1}">NEXT ${next.start}-${next.end}</button>`;
+  trendPager.querySelectorAll('button:not([disabled])').forEach(button=>button.onclick=()=>showTrendPage(+button.dataset.page));
+}
+render=function(){
+  const query=document.getElementById('q').value.trim().toLowerCase();
+  const matches=DATA.filter(item=>[item.name,item.category,item.shown,...item.colors,...item.features].join(' ').toLowerCase().includes(query));
+  const searching=query.length>0;
+  const pageItems=searching?matches:DATA.slice(trendPage*TREND_PAGE_SIZE,(trendPage+1)*TREND_PAGE_SIZE);
+  const range=trendRange(trendPage);
+  document.getElementById('count').textContent=searching?`SEARCH RESULTS - ${matches.length} STYLES`:`ONLINE TREND ORDER - ${range.start}-${range.end} OF ${DATA.length}`;
+  document.getElementById('grid').innerHTML=pageItems.map(item=>{const rank=DATA.indexOf(item)+1;return `<article class="card" data-product-id="${item.id}"><button class="photo product-open" type="button" data-id="${item.id}" aria-label="View ${item.name} details"><img src="${item.model}" loading="lazy" alt="${item.name}" onerror="this.closest('.photo').style.display='none'"></button><div class="meta"><div class="line1"><div class="category">${item.category}</div><div class="num">RANK ${String(rank).padStart(2,'0')}</div></div><div class="name">${item.name}</div><div class="info">${item.shown?`${tr('shown')}: ${item.shown}`:`${item.colors.length} ${tr('available')}`}</div><div class="chips">${item.colors.slice(0,6).map(color=>`<span class="chip">${color}</span>`).join('')}${item.colors.length>6?`<span class="chip">+${item.colors.length-6}</span>`:''}</div><button class="more" data-id="${item.id}">${tr('detail')}</button></div></article>`}).join('');
+  document.querySelectorAll('.more,.product-open').forEach(button=>button.onclick=()=>openItem(+button.dataset.id));
+  renderTrendNavigation(searching);
+};
+document.getElementById('q').oninput=render;
+render();
 </script><link rel="stylesheet" href="order-cart.css"><script src="order-cart.js"></script><style id="signature-hermes-type">:root{--signature-display:"Gill Sans","Trebuchet MS",Arial,sans-serif}body,.logo,.logo small,h1,.name,.details h2,.vendor-gate-card h2,.price-request-card h2,.industry-desc,.product-desc,.more,.source,.vendor-auth-btn{font-family:var(--signature-display);font-style:normal}.logo,h1,.name,.details h2,.vendor-gate-card h2,.price-request-card h2{letter-spacing:-.015em}.logo{letter-spacing:.13em}.name,.details h2{font-weight:400}.header-brand-lockup{display:flex;align-items:center;gap:9px}.header-brand-copy{font-family:var(--signature-display);line-height:1;text-align:center}.header-brand-copy span{display:block;font-size:22px;font-weight:600;letter-spacing:.15em;padding-left:.15em}.header-brand-copy small{display:flex;align-items:center;gap:6px;margin-top:6px;font-size:7px;font-weight:600;letter-spacing:.42em;padding-left:.42em;color:var(--gold)}.header-brand-copy small:before,.header-brand-copy small:after{content:"";flex:1;height:1px;background:var(--gold)}.header-official-emblem{position:relative;width:33px;height:55px;overflow:hidden}.header-official-emblem img{position:absolute;width:492%;max-width:none;height:auto;left:-357%;top:-29%}@media(max-width:420px){.header-brand-copy span{font-size:18px}.header-brand-copy small{font-size:6px}.header-official-emblem{width:27px;height:46px}}</style><script>(()=>{const logo=document.querySelector('.brand-logo');if(!logo)return;const lockup=document.createElement('div');lockup.className='header-brand-lockup';lockup.setAttribute('aria-label','Signature Collection');lockup.innerHTML='<div class="header-brand-copy"><span>SIGNATURE</span><small>COLLECTION</small></div><div class="header-official-emblem" aria-hidden="true"><img src="signature-official-logo.jpg" alt=""></div>';logo.replaceWith(lockup)})()</script></body></html>
