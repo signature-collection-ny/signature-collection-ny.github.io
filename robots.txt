@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://signature-collection-ny.github.io/sitemap.xml
