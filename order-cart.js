@@ -24,6 +24,7 @@
     root.querySelectorAll?.(".card .photo img, .heroimg img").forEach(img=>{
       const src=img.getAttribute("src")||"";
       if(!src||/^(?:data:|blob:|https?:)/i.test(src))return;
+      if(/^(?:photos|cards)\//.test(src))return;
       if(githubPages){
         const file=src.split("/").pop();
         const photo=img.closest(".photo");if(photo)photo.style.display="";
