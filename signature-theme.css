@@ -164,3 +164,5 @@ main.grid{max-width:calc(var(--wrap) + var(--gutter)*2);margin:0 auto;padding:0 
 .heroimg img{object-fit:contain}
 .style-groups{scroll-margin-top:168px}@media(max-width:680px){.style-groups{scroll-margin-top:140px}}
 .new-arrival-photo img{object-fit:contain!important;object-position:center bottom!important}
+@media(max-width:680px){.header-brand-copy small{font-size:10px;letter-spacing:.4em}}
+@media(max-width:420px){.vendor-auth-btn,.order-cart-trigger{font-size:11px;letter-spacing:.04em;padding:0 8px}}
