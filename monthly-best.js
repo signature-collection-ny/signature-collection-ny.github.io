@@ -47,7 +47,14 @@ const MONTHLY_BEST = {
   .mbest-all a,.mbest-all button{display:inline-flex;align-items:center;min-height:48px;padding:0 24px;border:1px solid var(--ink);background:transparent;color:var(--ink);font:600 12px/1 var(--sans);letter-spacing:.18em;text-decoration:none;cursor:pointer}
   .mbest-all a:hover,.mbest-all button:hover{background:var(--ink);color:var(--ivory)}
   @media(max-width:960px){.mbest-head{grid-template-columns:1fr;gap:16px}.mbest-item{grid-column:span 6}.mbest-item:first-child{grid-column:span 12;grid-row:auto}.mbest-item:first-child .mbest-photo{aspect-ratio:3/4;height:auto}}
-  @media(max-width:640px){.mbest{padding:72px 0}.mbest-grid{gap:24px 16px}.mbest-meta{grid-template-columns:auto 1fr;gap:4px 12px}.mbest-meta em{display:none}.mbest-meta i{font-size:24px}.mbest-meta b{font-size:14px}.mbest-meta small{font-size:12px}}
+  @media(max-width:640px){.mbest{padding:48px 0}.mbest-head{margin-bottom:24px}.mbest-head>p{display:none}.mbest-head h2{font-size:30px}
+  .mbest-grid{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-inline:var(--gutter,16px);gap:12px;margin:0 calc(var(--gutter,16px) * -1);padding:0 var(--gutter,16px) 8px;scrollbar-width:none}
+  .mbest-grid::-webkit-scrollbar{display:none}
+  .mbest-item,.mbest-item:first-child{flex:0 0 58%;scroll-snap-align:start}
+  .mbest-item:first-child .mbest-photo{aspect-ratio:3/4;height:auto}
+  .mbest-meta{grid-template-columns:auto 1fr;gap:2px 8px;margin-top:10px;padding-top:10px}.mbest-meta em{display:none}
+  .mbest-meta i,.mbest-item:first-child .mbest-meta i{font-size:20px}.mbest-meta b,.mbest-item:first-child .mbest-meta b{font-size:14px}.mbest-meta small{font-size:12px}
+  .mbest-all{margin-top:24px}.mbest-all a,.mbest-all button{min-height:44px;padding:0;border:0;text-decoration:underline;text-underline-offset:4px;background:none!important;color:var(--ink)!important}}
   @media(prefers-reduced-motion:reduce){.mbest-photo img{transition:none}}`;
 
   const onCatalog = typeof DATA !== 'undefined' && typeof openItem === 'function';

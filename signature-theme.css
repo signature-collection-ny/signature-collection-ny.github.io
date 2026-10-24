@@ -166,3 +166,39 @@ main.grid{max-width:calc(var(--wrap) + var(--gutter)*2);margin:0 auto;padding:0 
 .new-arrival-photo img{object-fit:contain!important;object-position:center bottom!important}
 @media(max-width:680px){.header-brand-copy small{font-size:10px;letter-spacing:.4em}}
 @media(max-width:420px){.vendor-auth-btn,.order-cart-trigger{font-size:11px;letter-spacing:.04em;padding:0 8px}}
+
+/* Mobile declutter (2026-10) */
+@media(max-width:680px){
+  .intro{padding:24px var(--gutter) 16px!important}
+  .intro h1{font-size:30px;margin:8px 0 0}
+  .intro p{display:none}
+  .new-arrival-feature{margin-bottom:8px}
+  .new-arrival-card{grid-template-columns:42% 1fr!important;min-height:0}
+  .new-arrival-photo{aspect-ratio:3/4!important;min-height:0}
+  .new-arrival-badge{left:8px;top:8px;padding:4px 6px;font-size:9px}
+  .new-arrival-copy{padding:16px!important;justify-content:center}
+  .new-arrival-kicker{font-size:9px;letter-spacing:.14em}
+  .new-arrival-copy h2{font-size:30px!important;margin:6px 0}
+  .new-arrival-description{font-size:13px;line-height:1.5}
+  .new-arrival-details{display:none}
+  .new-arrival-action{min-height:40px;margin-top:12px;font-size:10px;letter-spacing:.12em}
+  .controls{padding:8px var(--gutter)}
+  .controls .search{height:44px;font-size:16px}
+  .count{display:none}
+  .style-groups{margin:16px auto 20px}
+  .style-groups-label{margin-bottom:10px}
+  .style-groups-label span{display:none}
+  .style-groups-label strong{font-size:16px}
+  .style-group-tabs{display:grid!important;grid-template-columns:1fr 1fr;gap:8px;overflow:visible}
+  .style-group-tab{flex:none;min-height:52px;padding:8px 12px}
+  .style-group-tab span{font-size:11px}
+  .style-group-tab small{font-size:10px}
+  main.grid{gap:20px 12px}
+  .image-tile-copy{padding-top:8px;margin-top:8px}
+  .image-tile-copy strong{font-size:13px}
+  .image-tile-copy small{font-size:10px}
+  .style-pager{margin-top:28px}
+  .footer{margin-top:48px;padding:32px var(--gutter)}
+}
+@media(max-width:680px){.new-arrival-card{align-items:stretch}.new-arrival-photo{aspect-ratio:auto!important;height:auto}.new-arrival-photo img{height:100%!important;object-fit:cover!important;object-position:center top!important}}
+@media(max-width:680px){.new-arrival-badge,.new-arrival-kicker{font-size:10px}.new-arrival-action{font-size:11px}.style-group-tab small,.image-tile-copy small{font-size:11px}.header-brand-copy small{font-size:11px}}

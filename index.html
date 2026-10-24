@@ -184,8 +184,38 @@
       .contact-grid{grid-template-columns:1fr;gap:24px}
       .base{flex-direction:column;gap:8px}
       .facts span{font-size:11px;letter-spacing:.08em}
-      .mark-text small{font-size:10px;letter-spacing:.4em}
+      .mark-text small{font-size:11px;letter-spacing:.36em}
       .contact-item a{display:inline-block;padding:12px 0;margin:-8px 0}
+    }
+    @media(max-width:640px){
+      .hero{padding:32px 0 40px}
+      .hero .label{margin-bottom:16px}
+      .lede{font-size:16px;margin:16px 0 24px}
+      .hero .btn-row{gap:12px}
+      .hero .btn-line,.vendors .btn-line{min-height:44px;border:0;padding:0;text-decoration:underline;text-underline-offset:4px;flex:0 0 auto!important}
+      .facts{display:flex;flex-wrap:wrap;gap:4px 16px;margin-top:24px;padding-top:16px}
+      .facts li,.facts li+li{padding:0;border:0;display:flex;align-items:baseline;gap:6px}
+      .facts strong{font-size:20px}.facts span{margin:0;font-size:11px;letter-spacing:.06em}
+      .hero-grid{gap:32px}
+      .hero-photos{grid-template-columns:1fr 1fr;gap:12px}
+      .hero-photos a:nth-child(n+3){display:none}
+      .sec{padding:48px 0}
+      .sec-head{gap:12px;margin-bottom:24px}
+      .sec-head h2{font-size:30px}
+      .sec-head p{font-size:15px}
+      .styles{gap:12px}
+      .style .frame{aspect-ratio:1/1}
+      .style-meta{flex-direction:row;margin-top:8px;padding-top:8px}
+      .style-meta b{font-size:14px}.style-meta span{display:none}
+      .steps li,.steps li+li{display:grid;grid-template-columns:40px 1fr;column-gap:12px;padding:16px 0}
+      .steps i{grid-row:span 2;margin:0;font-size:28px}
+      .steps b{font-size:16px;margin:0 0 4px}.steps p{font-size:14px}
+      .vendors .btn-row{margin-top:24px}
+      .contact{padding:48px 0 32px}
+      .contact-top{gap:24px;padding-bottom:32px}
+      .contact h2{font-size:28px}
+      .contact-grid{gap:16px}
+      .contact-item a,.contact-item address{font-size:16px}
     }
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.style img{transition:none}}
   </style>
