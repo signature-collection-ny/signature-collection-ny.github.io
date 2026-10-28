@@ -62,6 +62,22 @@
     .sale-bar{display:block;background:var(--ink);color:var(--ivory);text-align:center;text-decoration:none;font:600 11px/1 var(--sans);letter-spacing:.16em;padding:12px 16px}
     .sale-bar b{color:var(--gold-on-ink)}
     .sale-bar:hover{background:var(--gold)}
+    .salecard{background:var(--ink);color:var(--ivory);padding:64px 0}
+    .salecard-grid{display:grid;grid-template-columns:5fr 7fr;gap:64px;align-items:center}
+    .salecard .label{color:var(--gold-on-ink);margin:0 0 16px}
+    .salecard h2{margin:0;font:400 clamp(40px,5vw,64px)/1.02 var(--sans);letter-spacing:-.015em}
+    .salecard h2 em{display:block;font:italic 500 1.1em/1.05 var(--serif);color:var(--gold-on-ink)}
+    .salecard-list{list-style:none;margin:32px 0;padding:0;border-top:1px solid #3a352d}
+    .salecard-list li{display:grid;grid-template-columns:1fr auto auto;gap:16px;align-items:baseline;padding:16px 0;border-bottom:1px solid #3a352d}
+    .salecard-list b{font:600 13px/1 var(--sans);letter-spacing:.16em}
+    .salecard-list s{color:#a59c8e;font-size:15px}
+    .salecard-list strong{font:italic 500 32px/1 var(--serif);color:var(--gold-on-ink)}
+    .btn-gold{background:var(--gold-on-ink);border-color:var(--gold-on-ink);color:var(--ink)}
+    .btn-gold:hover{background:var(--ivory);border-color:var(--ivory)}
+    .salecard-photos{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    .salecard-photos img{display:block;width:100%;height:auto;aspect-ratio:3/4;object-fit:cover;background:var(--photo)}
+    @media(max-width:960px){.salecard-grid{grid-template-columns:1fr;gap:32px}}
+    @media(max-width:640px){.salecard{padding:40px 0}.salecard h2{font-size:36px}.salecard-list{margin:24px 0}.salecard-list strong{font-size:28px}.salecard .btn{width:100%}.salecard-photos{gap:8px}}
     /* Header */
     .site-head{position:sticky;top:0;z-index:20;background:var(--ivory);border-bottom:1px solid var(--line)}
     .site-head .wrap{height:72px;display:flex;align-items:center;justify-content:space-between;gap:24px}
@@ -268,6 +284,24 @@
       </div>
     </section>
 
+    <section class="salecard" aria-labelledby="sale-title">
+      <div class="wrap salecard-grid">
+        <div>
+          <p class="label" data-i="saleLabel">Vendor sale · HD Lace</p>
+          <h2 id="sale-title"><span data-i="saleTitle">Two styles,</span><em data-i="saleTitleEm">now $15.</em></h2>
+          <ul class="salecard-list">
+            <li><b>GALAXY 3</b><s>$28.95</s><strong>$15</strong></li>
+            <li><b>CLICK-2</b><s>$27.95</s><strong>$15</strong></li>
+          </ul>
+          <a class="btn btn-gold" href="sale.html" data-i="saleCta">SEE THE SALE</a>
+        </div>
+        <div class="salecard-photos">
+          <a href="sale.html"><img src="sale/galaxy-3.jpg" alt="GALAXY 3 HD Lace long deep curl wig on sale" width="450" height="600" loading="lazy"></a>
+          <a href="sale.html"><img src="sale/click-2.jpg" alt="CLICK-2 HD Lace long water curl wig on sale" width="450" height="600" loading="lazy"></a>
+        </div>
+      </div>
+    </section>
+
     <section id="monthlyBest" class="mbest"></section>
 
     <section class="sec" id="styles" aria-labelledby="styles-title">
@@ -327,8 +361,8 @@
 
   <script>
     const COPY={
-      en:{saleBar:'VENDOR SALE — GALAXY 3 &amp; CLICK-2 NOW $15',navStyles:'COLLECTION',navVendors:'FOR VENDORS',navContact:'CONTACT',heritage:'Signature Looks, Inc. — Wholesale since 2005',headline:'Styles that sell.',headlineEm:'Colors they ask for.',tagline:'Signature Collection synthetic wigs for beauty supply stores. Every style and color, wholesale pricing for approved vendors.',explore:'VIEW THE COLLECTION',vendorInquiry:'NEW VENDOR INQUIRY',factYears:'YEARS IN WIG WHOLESALE',factFounded:'FOUNDED IN NEW YORK',factVendor:'VENDOR-ONLY PRICING',newArrival:'NEW ARRIVAL — ESSENSE',newArrivalNote:'QUEEN COLLECTION',stylesEyebrow:'The Collection',stylesTitle:'Shop by style',stylesIntro:'Browse every style and color without prices. Approved vendors sign in inside the catalog to see wholesale pricing.',sCurls:'Curls &amp; Waves',sStraight:'Straight',sBob:'Bob &amp; Shoulder',sShort:'Short &amp; Pixie',sView:'VIEW →',vendorsEyebrow:'For Beauty Supply Retailers',vendorsTitle:'How ordering works',vendorsIntro:'Already a Signature account? Use your vendor code. New store? Send us a short note and we will set you up.',step1:'Browse the collection',step1p:'Every style, length, and color is open to view — no login needed.',step2:'Sign in for pricing',step2p:'Enter your business name and vendor code to see wholesale prices.',step3:'Send your order',step3p:'Add styles and colors to your order. We confirm stock and colors by email.',openCatalog:'OPEN THE CATALOG',contactTitle:'Signature Looks, Inc.',contactEm:"New York, since 2005.",email:'Orders &amp; Inquiries',emailNote:'For orders, stock, and color confirmation.',telephone:'Telephone',textNote:'Text 646-339-9472 for quick questions.',office:'New York Office',instagram:'Instagram',instagramNote:'New styles and catalog updates.',baseNote:'WHOLESALE ONLY · NEW YORK SINCE 2005'},
-      ko:{saleBar:'거래처 세일 — GALAXY 3 · CLICK-2 지금 $15',navStyles:'컬렉션',navVendors:'거래처 안내',navContact:'연락처',heritage:'Signature Looks, Inc. — 2005년부터 도매',headline:'잘 팔리는 스타일,',headlineEm:'손님이 찾는 색상.',tagline:'뷰티서플라이 매장을 위한 Signature Collection 인조모 위그. 모든 스타일과 색상을 볼 수 있고, 승인된 거래처는 도매가를 확인할 수 있습니다.',explore:'컬렉션 보기',vendorInquiry:'신규 거래처 문의',factYears:'년 이상 위그 도매',factFounded:'뉴욕에서 설립',factVendor:'거래처 전용 도매가',newArrival:'신제품 — ESSENSE',newArrivalNote:'QUEEN 컬렉션',stylesEyebrow:'컬렉션',stylesTitle:'스타일별로 보기',stylesIntro:'모든 스타일과 색상을 가격 없이 둘러보실 수 있습니다. 승인된 거래처는 카탈로그 안에서 로그인 후 도매가를 확인합니다.',sCurls:'컬 &amp; 웨이브',sStraight:'스트레이트',sBob:'보브 &amp; 단발',sShort:'숏 &amp; 픽시',sView:'보기 →',vendorsEyebrow:'뷰티서플라이 매장 안내',vendorsTitle:'주문 방법',vendorsIntro:'기존 거래처는 거래처 코드로 로그인하세요. 신규 매장은 이메일로 간단히 문의 주시면 안내해 드립니다.',step1:'컬렉션 둘러보기',step1p:'모든 스타일·길이·색상을 로그인 없이 볼 수 있습니다.',step2:'로그인 후 가격 확인',step2p:'업체명과 거래처 코드를 입력하면 도매가가 보입니다.',step3:'주문 보내기',step3p:'스타일과 색상을 담아 주문하시면, 재고와 색상을 이메일로 확인해 드립니다.',openCatalog:'카탈로그 열기',contactTitle:'Signature Looks, Inc.',contactEm:"뉴욕, 2005년부터.",email:'주문 및 제품 문의',emailNote:'주문·재고·색상 확인은 이메일로 문의해 주세요.',telephone:'회사 전화',textNote:'간단한 문의는 646-339-9472로 문자 주세요.',office:'뉴욕 오피스',instagram:'인스타그램',instagramNote:'신제품과 카탈로그 소식.',baseNote:'도매 전용 · 뉴욕 2005년 설립'}
+      en:{saleLabel:'Vendor sale · HD Lace',saleTitle:'Two styles,',saleTitleEm:'now $15.',saleCta:'SEE THE SALE',saleBar:'VENDOR SALE — GALAXY 3 &amp; CLICK-2 NOW $15',navStyles:'COLLECTION',navVendors:'FOR VENDORS',navContact:'CONTACT',heritage:'Signature Looks, Inc. — Wholesale since 2005',headline:'Styles that sell.',headlineEm:'Colors they ask for.',tagline:'Signature Collection synthetic wigs for beauty supply stores. Every style and color, wholesale pricing for approved vendors.',explore:'VIEW THE COLLECTION',vendorInquiry:'NEW VENDOR INQUIRY',factYears:'YEARS IN WIG WHOLESALE',factFounded:'FOUNDED IN NEW YORK',factVendor:'VENDOR-ONLY PRICING',newArrival:'NEW ARRIVAL — ESSENSE',newArrivalNote:'QUEEN COLLECTION',stylesEyebrow:'The Collection',stylesTitle:'Shop by style',stylesIntro:'Browse every style and color without prices. Approved vendors sign in inside the catalog to see wholesale pricing.',sCurls:'Curls &amp; Waves',sStraight:'Straight',sBob:'Bob &amp; Shoulder',sShort:'Short &amp; Pixie',sView:'VIEW →',vendorsEyebrow:'For Beauty Supply Retailers',vendorsTitle:'How ordering works',vendorsIntro:'Already a Signature account? Use your vendor code. New store? Send us a short note and we will set you up.',step1:'Browse the collection',step1p:'Every style, length, and color is open to view — no login needed.',step2:'Sign in for pricing',step2p:'Enter your business name and vendor code to see wholesale prices.',step3:'Send your order',step3p:'Add styles and colors to your order. We confirm stock and colors by email.',openCatalog:'OPEN THE CATALOG',contactTitle:'Signature Looks, Inc.',contactEm:"New York, since 2005.",email:'Orders &amp; Inquiries',emailNote:'For orders, stock, and color confirmation.',telephone:'Telephone',textNote:'Text 646-339-9472 for quick questions.',office:'New York Office',instagram:'Instagram',instagramNote:'New styles and catalog updates.',baseNote:'WHOLESALE ONLY · NEW YORK SINCE 2005'},
+      ko:{saleLabel:'거래처 세일 · HD 레이스',saleTitle:'두 가지 스타일,',saleTitleEm:'지금 $15.',saleCta:'세일 보기',saleBar:'거래처 세일 — GALAXY 3 · CLICK-2 지금 $15',navStyles:'컬렉션',navVendors:'거래처 안내',navContact:'연락처',heritage:'Signature Looks, Inc. — 2005년부터 도매',headline:'잘 팔리는 스타일,',headlineEm:'손님이 찾는 색상.',tagline:'뷰티서플라이 매장을 위한 Signature Collection 인조모 위그. 모든 스타일과 색상을 볼 수 있고, 승인된 거래처는 도매가를 확인할 수 있습니다.',explore:'컬렉션 보기',vendorInquiry:'신규 거래처 문의',factYears:'년 이상 위그 도매',factFounded:'뉴욕에서 설립',factVendor:'거래처 전용 도매가',newArrival:'신제품 — ESSENSE',newArrivalNote:'QUEEN 컬렉션',stylesEyebrow:'컬렉션',stylesTitle:'스타일별로 보기',stylesIntro:'모든 스타일과 색상을 가격 없이 둘러보실 수 있습니다. 승인된 거래처는 카탈로그 안에서 로그인 후 도매가를 확인합니다.',sCurls:'컬 &amp; 웨이브',sStraight:'스트레이트',sBob:'보브 &amp; 단발',sShort:'숏 &amp; 픽시',sView:'보기 →',vendorsEyebrow:'뷰티서플라이 매장 안내',vendorsTitle:'주문 방법',vendorsIntro:'기존 거래처는 거래처 코드로 로그인하세요. 신규 매장은 이메일로 간단히 문의 주시면 안내해 드립니다.',step1:'컬렉션 둘러보기',step1p:'모든 스타일·길이·색상을 로그인 없이 볼 수 있습니다.',step2:'로그인 후 가격 확인',step2p:'업체명과 거래처 코드를 입력하면 도매가가 보입니다.',step3:'주문 보내기',step3p:'스타일과 색상을 담아 주문하시면, 재고와 색상을 이메일로 확인해 드립니다.',openCatalog:'카탈로그 열기',contactTitle:'Signature Looks, Inc.',contactEm:"뉴욕, 2005년부터.",email:'주문 및 제품 문의',emailNote:'주문·재고·색상 확인은 이메일로 문의해 주세요.',telephone:'회사 전화',textNote:'간단한 문의는 646-339-9472로 문자 주세요.',office:'뉴욕 오피스',instagram:'인스타그램',instagramNote:'신제품과 카탈로그 소식.',baseNote:'도매 전용 · 뉴욕 2005년 설립'}
     };
     function setLanguage(lang){
       document.documentElement.lang=lang;
