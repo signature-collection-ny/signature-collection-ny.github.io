@@ -5,6 +5,7 @@ const DATA=[{"id":46,"name":"ESSENSE","category":"LACE","model":"46-essense-appr
 </script><script>
 DATA.unshift({"id":42,"name":"ASSIST","category":"CLASSIC","model":"42-assist-approved.jpg","reference":"42-assist-source-card.png","colors":["1","1B","2","1010","3T280","3T34","3T51","DAISY","F1B/30","F4/27","F4/30","TT1B/30","TT1B350","TT4/27","TT4/30"],"shown":"2","features":[],"description":"Short Layered Pixie  / Textured Crown  / Wispy Bangs  / Tapered Sides"});
 DATA.unshift({"id":43,"name":"KAKAO-1","category":"CLASSIC","model":"43-kakao-1-approved.png","reference":"43-kakao-1-source-card.png","colors":["1","1B","2","P1BB/844","P1BB/845","T1B/27ND","T1B/118","F1B/30","F4/27","F4/30","2T4/27"],"shown":"P1BB/845","features":["Breathable Thinnest Weft","Kanekalon","Toyokalon"],"description":"Shoulder-Length Tight Curl  / Full Curly Bang  / Rounded Volume"});
+DATA.unshift({"id":49,"name":"FEATHER QUEEN DEEP WAVE 18\"","category":"CROCHET","model":"49-feather-queen-deep-wave-18in-approved.jpg","reference":"cards/49-feather-queen-deep-wave-18in-approved.jpg","colors":["NATURAL DARK","NATURAL BROWN","NATURAL CINNAMON"],"shown":"NATURAL DARK","features":["Crochet","100% Premium Fiber","Light to Wear","Durable Through Multiple Uses"],"description":"18-Inch Deep Wave Crochet  / Feather Collection"});
 const nSabrina=DATA.find(item=>item.name==='N.SABRINA');
 if(nSabrina)nSabrina.model='37-n-sabrina-natural-v2.png';
 DATA.sort((a,b)=>a.name.localeCompare(b.name));/* Remove the legacy corrupted Korean label below.
@@ -13,7 +14,7 @@ T.ko.popular='온라인 인기순';
 T.en.popular='EXPLORE THE COLLECTION';
 render();
 </script><script>
-const PRICES={"INDRI-2":"15.95","QUEEN":"22.95","KAKAO-1":"17.95","ASSIST":"15.50","TRACK":"27.95","GALAXY 1":"22.95","GALAXY 2":"24.95","NEW FARRAH-2":"34.95","NEW FARRAH-1":"34.95","ISABEL":"25.95","N.SABRINA":"32.95","LONG SPIRIT 32\"":"35.95","LONG SPIRIT 26\"":"32.95","CURL SPIRIT 24\"":"31.95","CURL SPIRIT 18\"":"29.95","GOLD":"34.95","BLACK":"34.95","NAOMI-1":"24.50","NAOMI-2":"25.50","NAOMI-3":"27.95","NAOMI-6":"24.95","NAOMI-7":"24.95","SELENA":"22.95","JENNY":"34.95","JANE":"34.95","S.K.901":"19.50","AWARD":"18.50","S.K.977":"19.95","NEW GAYO 3":"25.50","NEW GAYO 1":"23.50","ROSE":"34.95","LEMON":"16.95","TOMORROW":"27.95","S.K.909":"18.95","BLOSSOM":"16.95","COCOA":"15.50","S.K.911":"19.95","DESIGN A":"14.95","S.K.918":"19.95","DESIGN C":"14.95","S.K.907":"18.95","S.K.957":"19.95","S.K.919":"20.95","BABY":"13.95","JUMP":"15.25"};
+const PRICES={"INDRI-2":"15.95","QUEEN":"22.95","KAKAO-1":"17.95","ASSIST":"15.50","TRACK":"27.95","GALAXY 1":"22.95","GALAXY 2":"24.95","NEW FARRAH-2":"34.95","NEW FARRAH-1":"34.95","ISABEL":"25.95","N.SABRINA":"32.95","LONG SPIRIT 32\"":"35.95","LONG SPIRIT 26\"":"32.95","CURL SPIRIT 24\"":"31.95","CURL SPIRIT 18\"":"29.95","GOLD":"34.95","BLACK":"34.95","NAOMI-1":"24.50","NAOMI-2":"25.50","NAOMI-3":"27.95","NAOMI-6":"24.95","NAOMI-7":"24.95","SELENA":"22.95","JENNY":"34.95","JANE":"34.95","S.K.901":"19.50","AWARD":"18.50","S.K.977":"19.95","NEW GAYO 3":"25.50","NEW GAYO 1":"23.50","ROSE":"34.95","LEMON":"16.95","TOMORROW":"27.95","S.K.909":"18.95","BLOSSOM":"16.95","COCOA":"15.50","S.K.911":"19.95","DESIGN A":"14.95","S.K.918":"19.95","DESIGN C":"14.95","S.K.907":"18.95","S.K.957":"19.95","S.K.919":"20.95","BABY":"13.95","JUMP":"15.25","FEATHER QUEEN DEEP WAVE 18\"":"6.50"};
 const VENDOR_SESSION_KEY='signatureVendorPriceAccessV2';
 const VENDOR_CODE_HASH='162f407477b04b5fef91a83e82ccd8b06ed2ae2db5daa62f328a570cc39f6d2a';
 const VENDOR_LOG_ENDPOINT='https://script.google.com/macros/s/AKfycbw0o-dLKV-ZFER6yrSY1leuTjpvG3gvcE-kW3uz_nqFkGtaSsHWhqzBWpV_9eejK5bd/exec';
@@ -119,7 +120,7 @@ const styleGroups=document.createElement('section');
 styleGroups.id='styleGroups';
 styleGroups.className='style-groups';
 styleGroups.setAttribute('aria-label','Shop by hairstyle');
-styleGroups.innerHTML='<div class="style-groups-label"><strong>SHOP BY STYLE</strong><span>UP TO 10 STYLES PER PAGE</span></div><div class="style-group-tabs" role="tablist"></div><div class="style-search-note">SEARCHING ALL 46 STYLES</div>';
+styleGroups.innerHTML='<div class="style-groups-label"><strong>SHOP BY STYLE</strong><span>UP TO 10 STYLES PER PAGE</span></div><div class="style-group-tabs" role="tablist"></div><div class="style-search-note">SEARCHING ALL 47 STYLES</div>';
 document.getElementById('count').after(styleGroups);
 const stylePager=document.createElement('nav');
 stylePager.id='stylePager';
