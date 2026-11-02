@@ -238,6 +238,76 @@ html[lang=ko] .lab,html[lang=ko] .types button,html[lang=ko] .tbtn,html[lang=ko]
   .nm{font-size:14px}.ln{display:none}
   .pr b{font-size:20px}
 }
+
+/* --- easy-reading phone layer --- */
+.ftoggle,.viewbtn{display:none}
+.rl-r{display:flex;align-items:center;gap:16px}
+.callbar{display:none}
+.ftoggle svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.8}
+@media (max-width:820px){
+  body{font-size:16px}
+  .lab{font-size:12px;letter-spacing:.08em}
+  .lead h1{font-size:36px}
+  .lead p{font-size:16px;line-height:1.6}
+  .types button{font-size:14px;letter-spacing:.04em;padding:16px 0 14px;text-transform:none}
+  .types button span{font-size:13px}
+  .filters{flex-wrap:wrap;overflow:visible;gap:8px;margin-inline:0;padding-inline:0}
+  .search{flex:1 1 0;min-width:0}
+  .search input{height:48px;font-size:17px;padding-left:40px}
+  .search svg{top:16px;left:14px}
+  .ftoggle{display:inline-flex;align-items:center;gap:8px;height:48px;padding:0 16px;border:1px solid var(--ink);background:var(--ivory);font:600 15px/1 var(--sans);flex:0 0 auto}
+  .ftoggle[aria-expanded="true"]{background:var(--ink);color:var(--ivory)}
+  .filters .seg,.filters .sort{display:none}
+  .filters.open .seg,.filters.open .sort{display:flex;flex:1 1 100%;border:0;padding:0;margin:0;flex-wrap:wrap;gap:8px}
+  .filters.open .seg>span,.filters.open .sort label{display:block;flex:1 1 100%;font-size:12px;letter-spacing:.08em;margin:4px 0 0}
+  .seg button{height:44px;padding:0 16px;font-size:16px;flex:1 1 0}
+  .sort select{height:44px;font-size:16px;flex:1 1 100%}
+  .resultline{font-size:15px}
+  .viewbtn{display:inline-flex;align-items:center;height:40px;padding:0 14px;border:1px solid var(--ink);background:transparent;font:600 14px/1 var(--sans)}
+  .viewbtn[aria-pressed="true"]{background:var(--ink);color:var(--ivory)}
+  .clear{font-size:15px}
+  .nm{font-size:17px;letter-spacing:.03em}
+  .ds{font-size:14px;white-space:normal;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+  .sw i{width:18px;height:18px}
+  .sw em{font-size:13px}
+  .pr b{font-size:24px}
+  .pr .lock{font-size:13px;letter-spacing:.04em;padding:10px 0;margin:-6px 0}
+  .badge{font-size:12px;padding:6px 9px}
+  body.big .grid{grid-template-columns:1fr;gap:40px}
+  body.big .nm{font-size:22px}
+  body.big .ds{font-size:16px}
+  body.big .sw i{width:22px;height:22px}
+  .dt-body h2{font-size:34px}
+  .dt-body .sub{font-size:16px}
+  .colors label{height:48px;font-size:16px;padding:0 14px 0 8px}
+  .colors i{width:30px;height:30px}
+  .feat li{font-size:15px;padding:6px 12px}
+  .blk h3{font-size:13px;letter-spacing:.06em}
+  .note{font-size:14px}
+  .qty{height:52px}.qty button{width:52px;font-size:24px}.qty input{width:64px;font-size:18px}
+  .btn{height:52px;font-size:15px;letter-spacing:.06em}
+  .field label{font-size:13px;letter-spacing:.04em}
+  .field input,.field textarea{font-size:17px;padding:12px}
+  .callbar{display:grid;grid-template-columns:1fr 1fr;position:fixed;left:0;right:0;bottom:0;z-index:45;background:var(--ink);padding:8px max(8px,env(safe-area-inset-right,0px)) calc(8px + env(safe-area-inset-bottom,0px)) max(8px,env(safe-area-inset-left,0px));gap:8px}
+  .callbar a{display:flex;align-items:center;justify-content:center;gap:8px;min-height:52px;background:var(--ivory);color:var(--ink);text-decoration:none;font:600 16px/1.1 var(--sans);font-variant-numeric:tabular-nums}
+  .callbar a+a{background:transparent;color:var(--ivory);border:1px solid var(--gold-ink)}
+  .callbar b{font-weight:700}
+  body{padding-bottom:calc(68px + env(safe-area-inset-bottom,0px))}
+  .toast{bottom:calc(88px + env(safe-area-inset-bottom,0px));font-size:15px}
+}
+@media (max-width:520px){
+  .tbtn{height:40px;padding:0 12px;font-size:12px}
+  .count{min-width:20px;height:20px;font-size:12px}
+  .langs button{width:auto;min-width:52px;padding:0 10px;height:40px;font-size:13px;letter-spacing:0;white-space:nowrap}
+  .langs button[aria-pressed="true"]{display:none}
+  .head .wrap{gap:6px}
+  .mark b{font-size:14px}
+  .lead h1{font-size:32px}
+  .nm{font-size:16px}
+  .pr b{font-size:22px}
+  body.big .nm{font-size:22px}
+  body.big .pr b{font-size:28px}
+}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 </head>
@@ -253,7 +323,7 @@ html[lang=ko] .lab,html[lang=ko] .types button,html[lang=ko] .tbtn,html[lang=ko]
     <div class="tools">
       <button class="tbtn" id="orderBtn" type="button" aria-haspopup="dialog"><span data-i="order">ORDER</span><span class="count" id="orderCount">0</span></button>
       <button class="tbtn ghost" id="authBtn" type="button"><span class="long" id="authA">VENDOR </span><span id="authB">LOGIN</span></button>
-      <div class="langs" role="group" aria-label="Language"><button type="button" id="lang-ko" aria-pressed="false">KR</button><button type="button" id="lang-en" aria-pressed="true">EN</button></div>
+      <div class="langs" role="group" aria-label="Language"><button type="button" id="lang-ko" aria-pressed="false">한국어</button><button type="button" id="lang-en" aria-pressed="true">EN</button></div>
     </div>
   </div>
 </header>
@@ -273,6 +343,7 @@ html[lang=ko] .lab,html[lang=ko] .types button,html[lang=ko] .tbtn,html[lang=ko]
       <div class="types" role="tablist" aria-label="Product type" id="types"></div>
       <div class="filters">
         <div class="search"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="7" cy="7" r="5"/><path d="M11 11l4 4"/></svg><label class="sr" for="q" data-i="searchLabel">Search styles or colors</label><input id="q" type="search" autocomplete="off" placeholder="Search style or color"></div>
+        <button class="ftoggle" type="button" id="filtBtn" aria-expanded="false"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 4h12M4 8h8M6 12h4"/></svg><span data-i="filterBtn">Filter</span></button>
         <div class="seg" role="group" aria-labelledby="lenLab"><span id="lenLab" data-i="length">Length</span><button type="button" data-len="SHORT" aria-pressed="false" data-i="short">Short</button><button type="button" data-len="MEDIUM" aria-pressed="false" data-i="medium">Shoulder</button><button type="button" data-len="LONG" aria-pressed="false" data-i="long">Long</button></div>
         <div class="seg" role="group" aria-labelledby="texLab"><span id="texLab" data-i="texture">Texture</span><button type="button" data-tex="STRAIGHT" aria-pressed="false" data-i="straight">Straight</button><button type="button" data-tex="WAVE" aria-pressed="false" data-i="wave">Wave</button><button type="button" data-tex="CURL" aria-pressed="false" data-i="curl">Curl</button></div>
         <div class="sort"><label for="sort" data-i="sortBy">Sort</label><select id="sort"><option value="featured">Featured</option><option value="new">Newest</option><option value="name">Name A–Z</option><option value="plo">Price: low to high</option><option value="phi">Price: high to low</option></select></div>
@@ -281,10 +352,12 @@ html[lang=ko] .lab,html[lang=ko] .types button,html[lang=ko] .tbtn,html[lang=ko]
   </div>
 
   <div class="wrap">
-    <div class="resultline"><span id="resultText" aria-live="polite"></span><button class="clear" type="button" id="clearBtn" hidden data-i="clear">Clear filters</button></div>
+    <div class="resultline"><span id="resultText" aria-live="polite"></span><span class="rl-r"><button class="clear" type="button" id="clearBtn" hidden data-i="clear">Clear filters</button><button class="viewbtn" type="button" id="viewBtn" aria-pressed="false" data-i="bigView">Large photos</button></span></div>
     <ul class="grid" id="grid"></ul>
   </div>
 </main>
+
+<nav class="callbar" aria-label="Contact"><a href="tel:+17187865516"><b data-i="callLab">Call</b> 718-786-5516</a><a href="sms:+16463399472"><b data-i="textLab">Text</b> 646-339-9472</a></nav>
 
 <footer class="foot"><div class="wrap"><span>SIGNATURE LOOKS, INC. · 36-31 33RD STREET, LONG ISLAND CITY, NY 11106</span><span><a href="tel:+17187865516">718-786-5516</a> · <a href="mailto:Jae@signaturelooksinc.com">JAE@SIGNATURELOOKSINC.COM</a></span></div></footer>
 
@@ -345,7 +418,7 @@ const ss={get:k=>{try{return sessionStorage.getItem(k)}catch{return null}},set:(
 const ls={get:k=>{try{return localStorage.getItem(k)}catch{return null}},set:(k,v)=>{try{localStorage.setItem(k,v)}catch{}}};
 
 const T={
- en:{navHome:'HOME',navCatalog:'CATALOG',navSale:'SALE',order:'ORDER',loginA:'VENDOR ',loginB:'LOGIN',logout:'LOG OUT',eyebrow:n=>`Wholesale catalog · ${n} styles`,title1:'The Collection',title2:'for your shelves.',intro:'Every Signature style and color in one place. Browse freely; approved vendors log in to see wholesale prices and send an order request.',saleTag:'VENDOR SALE · HD LACE',saleNow:'now $15',searchLabel:'Search styles or colors',search:'Search style or color',length:'Length',short:'Short',medium:'Shoulder',long:'Long',texture:'Texture',straight:'Straight',wave:'Wave',curl:'Curl',sortBy:'Sort',sorts:['Featured','Newest','Name A–Z','Price: low to high','Price: high to low'],clear:'Clear filters',
+ en:{filterBtn:'Filter',bigView:'Large photos',callLab:'Call',textLab:'Text',navHome:'HOME',navCatalog:'CATALOG',navSale:'SALE',order:'ORDER',loginA:'VENDOR ',loginB:'LOGIN',logout:'LOG OUT',eyebrow:n=>`Wholesale catalog · ${n} styles`,title1:'The Collection',title2:'for your shelves.',intro:'Every Signature style and color in one place. Browse freely; approved vendors log in to see wholesale prices and send an order request.',saleTag:'VENDOR SALE · HD LACE',saleNow:'now $15',searchLabel:'Search styles or colors',search:'Search style or color',length:'Length',short:'Short',medium:'Shoulder',long:'Long',texture:'Texture',straight:'Straight',wave:'Wave',curl:'Curl',sortBy:'Sort',sorts:['Featured','Newest','Name A–Z','Price: low to high','Price: high to low'],clear:'Clear filters',
   types:{ALL:'All styles',LACE_FRONT:'Lace front',EVERYDAY:'Everyday wigs',HALF_WIG:'Half wigs',PONYTAIL:'Ponytails',CROCHET:'Crochet & add-on'},
   result:(n,t)=>`<b>${n}</b> ${n===1?'style':'styles'} · ${t}`,emptyT:'No styles match these filters.',emptyP:'Try a different length or texture, or clear the filters.',
   lens:{SHORT:'Short',MEDIUM:'Shoulder length',LONG:'Long'},texs:{STRAIGHT:'Straight',WAVE:'Wave',CURL:'Curl'},
@@ -354,7 +427,7 @@ const T={
   ordEyebrow:'Order request',ordTitle:'Your order',ordNote:'No payment is taken online. We confirm stock, colors, shipping and the final total by email before processing.',subtotal:'PRODUCT SUBTOTAL',fStore:'Store / business name *',fBuyer:'Buyer name *',fEmail:'Email *',fPhone:'Phone *',fAddr:'Shipping / delivery address *',fNotes:'Order notes',send:'SEND ORDER REQUEST',sending:'SENDING…',copy:'COPY ORDER',ordContact:'Questions? Text',call:'Call',emptyCart:'Your order is empty. Open any style, pick a color and quantity, then add it here.',remove:'Remove',unit:'Unit',tbc:'price to confirm',
   needItems:'Add at least one style before sending.',needFields:'Fill in the fields marked with *.',sent:`Order request sent to ${ORDER_EMAIL}. We will email you a confirmation after we review it.`,sendFail:`The order could not be sent. Use COPY ORDER and email ${ORDER_EMAIL}.`,copied:'Order copied. Paste it into an email or text.',copyFail:`Could not copy. Please email ${ORDER_EMAIL}.`,
   gateT1:'Vendor',gateT2:'price access',gateNote:'Enter your business details and vendor access code to see wholesale prices and send orders.',gBiz:'Business name',gEmail:'Business email',gCode:'Access code',gSubmit:'VIEW VENDOR PRICES',gRequest:'New store? Request vendor access',gNeed:'Enter your business name and email.',gBad:'That access code is not valid. Contact Signature Collection for your code.',welcome:'Vendor prices are now visible.'},
- ko:{navHome:'홈',navCatalog:'카탈로그',navSale:'세일',order:'주문',loginA:'거래처 ',loginB:'로그인',logout:'로그아웃',eyebrow:n=>`도매 카탈로그 · ${n}개 스타일`,title1:'시그니처 컬렉션',title2:'매장에 걸 모든 스타일.',intro:'시그니처의 모든 스타일과 색상을 한곳에서 보세요. 누구나 둘러볼 수 있고, 승인된 거래처는 로그인하면 도매가 확인과 주문 요청이 가능합니다.',saleTag:'거래처 세일 · HD 레이스',saleNow:'지금 $15',searchLabel:'스타일 또는 색상 검색',search:'스타일명 또는 색상 검색',length:'기장',short:'숏',medium:'어깨',long:'롱',texture:'텍스처',straight:'스트레이트',wave:'웨이브',curl:'컬',sortBy:'정렬',sorts:['추천순','신상품순','이름순','가격 낮은순','가격 높은순'],clear:'필터 초기화',
+ ko:{filterBtn:'필터',bigView:'사진 크게',callLab:'전화',textLab:'문자',navHome:'홈',navCatalog:'카탈로그',navSale:'세일',order:'주문',loginA:'거래처 ',loginB:'로그인',logout:'로그아웃',eyebrow:n=>`도매 카탈로그 · ${n}개 스타일`,title1:'시그니처 컬렉션',title2:'매장에 걸 모든 스타일.',intro:'시그니처의 모든 스타일과 색상을 한곳에서 보세요. 누구나 둘러볼 수 있고, 승인된 거래처는 로그인하면 도매가 확인과 주문 요청이 가능합니다.',saleTag:'거래처 세일 · HD 레이스',saleNow:'지금 $15',searchLabel:'스타일 또는 색상 검색',search:'스타일명 또는 색상 검색',length:'기장',short:'숏',medium:'어깨',long:'롱',texture:'텍스처',straight:'스트레이트',wave:'웨이브',curl:'컬',sortBy:'정렬',sorts:['추천순','신상품순','이름순','가격 낮은순','가격 높은순'],clear:'필터 초기화',
   types:{ALL:'전체',LACE_FRONT:'레이스 프런트',EVERYDAY:'데일리 가발',HALF_WIG:'하프 위그',PONYTAIL:'포니테일',CROCHET:'크로셰 · 붙임머리'},
   result:(n,t)=>`<b>${n}</b>개 스타일 · ${t}`,emptyT:'조건에 맞는 스타일이 없습니다.',emptyP:'기장이나 텍스처를 바꾸거나 필터를 초기화해 보세요.',
   lens:{SHORT:'숏',MEDIUM:'어깨 기장',LONG:'롱'},texs:{STRAIGHT:'스트레이트',WAVE:'웨이브',CURL:'컬'},
@@ -364,12 +437,14 @@ const T={
   needItems:'상품을 하나 이상 담아 주세요.',needFields:'* 표시된 항목을 모두 입력해 주세요.',sent:`주문 요청을 ${ORDER_EMAIL}로 보냈습니다. 확인 후 이메일로 연락드립니다.`,sendFail:`전송에 실패했습니다. 주문 내용 복사 후 ${ORDER_EMAIL}로 보내 주세요.`,copied:'주문 내용을 복사했습니다. 이메일이나 문자에 붙여 넣으세요.',copyFail:`복사하지 못했습니다. ${ORDER_EMAIL}로 연락해 주세요.`,
   gateT1:'거래처',gateT2:'가격 확인',gateNote:'상호명과 거래처 코드를 입력하면 도매가 확인과 주문이 가능합니다.',gBiz:'상호명',gEmail:'업무용 이메일',gCode:'거래처 코드',gSubmit:'도매가 보기',gRequest:'신규 매장이신가요? 거래처 등록 요청',gNeed:'상호명과 이메일을 입력해 주세요.',gBad:'거래처 코드가 맞지 않습니다. 시그니처 컬렉션에 문의해 주세요.',welcome:'이제 도매가가 표시됩니다.'}
 };
-let lang=ls.get(LANG_KEY)==='ko'?'ko':'en';
+let lang=(()=>{const v=ls.get(LANG_KEY)||ls.get('signatureLang');if(v==='ko'||v==='en')return v;try{return(navigator.languages||[navigator.language]).some(l=>/^ko/i.test(l))?'ko':'en'}catch{return'en'}})();
 const t=k=>T[lang][k];
 const state={type:'ALL',len:null,tex:null,q:'',sort:'featured'};
 const money=v=>new Intl.NumberFormat('en-US',{style:'currency',currency:'USD'}).format(Number(v)||0);
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const loggedIn=()=>ss.get(VENDOR_SESSION_KEY)==='1';
+const LOGIN_DAYS=30;const loggedIn=()=>{if(ss.get(VENDOR_SESSION_KEY)==='1')return true;const t=+ls.get(VENDOR_SESSION_KEY)||0;return t>Date.now()};
+const rememberLogin=()=>{ss.set(VENDOR_SESSION_KEY,'1');ls.set(VENDOR_SESSION_KEY,String(Date.now()+LOGIN_DAYS*864e5))};
+const forgetLogin=()=>{ss.del(VENDOR_SESSION_KEY);try{localStorage.removeItem(VENDOR_SESSION_KEY)}catch{}};
 
 function tone(v){v=v.toUpperCase();if(v.includes('GREEN'))return'#315844';if(v.includes('ASHLEY'))return'#d7c2a1';if(v.includes('BLONDE')||v==='60'||v.includes('613'))return'#e6d29a';if(v.includes('CINNAMON'))return'#7a3e22';if(v.includes('NATURAL BROWN')||v.includes('MOCHA'))return'#4a2f22';if(v.includes('NATURAL DARK'))return'#1d1714';if(v.includes('CARAMEL')||v.includes('27'))return'#b97831';if(v.includes('HAZEL')||v.includes('30'))return'#8b4d2d';if(v.includes('COPPER')||v.includes('707')||v.includes('710'))return'#9f4427';if(v.includes('BURG')||v.includes('WINE')||v.includes('99J')||v.includes('RED')||v.includes('6001'))return'#6f1425';if(v.includes('280')||v.includes('51')||v==='1010')return'#80756d';if(v.includes('4'))return'#4a2a1e';if(v.includes('3'))return'#593622';if(v.includes('2'))return'#2b1c18';if(v.includes('1B'))return'#171414';if(v==='1')return'#080808';return'#493126'}
 function hair(code){const parts=code.toUpperCase().split('/').map(tone);if(parts.length===1)return parts[0];if(/^(T|HCT|TP|2T)/.test(code.toUpperCase()))return`linear-gradient(180deg,${parts[0]} 0 35%,${parts[1]} 68%${parts[2]?`,${parts[2]} 100%`:''})`;return`linear-gradient(90deg,${parts.map((c,i)=>`${c} ${i/(parts.length-1)*100}%`).join(',')})`}
@@ -417,8 +492,8 @@ function applyLang(){
   updateAuth();render();renderCart();
   if($('#detail').open&&current)openDetail(current.id,true);
 }
-$('#lang-ko').onclick=()=>{lang='ko';ls.set(LANG_KEY,'ko');applyLang()};
-$('#lang-en').onclick=()=>{lang='en';ls.set(LANG_KEY,'en');applyLang()};
+$('#lang-ko').onclick=()=>{lang='ko';ls.set(LANG_KEY,'ko');ls.set('signatureLang','ko');applyLang()};
+$('#lang-en').onclick=()=>{lang='en';ls.set(LANG_KEY,'en');ls.set('signatureLang','en');applyLang()};
 
 /* ---------- filters ---------- */
 $('#types').addEventListener('click',e=>{const b=e.target.closest('[data-type]');if(!b)return;state.type=b.dataset.type;setHash();render()});
@@ -426,6 +501,9 @@ document.querySelectorAll('[data-len]').forEach(b=>b.onclick=()=>{state.len=stat
 document.querySelectorAll('[data-tex]').forEach(b=>b.onclick=()=>{state.tex=state.tex===b.dataset.tex?null:b.dataset.tex;renderGrid()});
 $('#q').addEventListener('input',e=>{state.q=e.target.value;renderGrid()});
 $('#sort').addEventListener('change',e=>{if((e.target.value==='plo'||e.target.value==='phi')&&!loggedIn()){e.target.value=state.sort;openGate();return}state.sort=e.target.value;renderGrid()});
+const VIEW_KEY='signatureCatalogView';function setView(big){document.body.classList.toggle('big',big);$('#viewBtn').setAttribute('aria-pressed',String(big));ls.set(VIEW_KEY,big?'1':'0')}
+$('#viewBtn').onclick=()=>setView(!document.body.classList.contains('big'));
+$('#filtBtn').onclick=()=>{const f=$('.filters'),o=!f.classList.contains('open');f.classList.toggle('open',o);$('#filtBtn').setAttribute('aria-expanded',String(o))};
 $('#clearBtn').onclick=()=>{state.len=state.tex=null;state.q='';$('#q').value='';renderGrid()};
 $('#grid').addEventListener('click',e=>{if(e.target.closest('[data-login]')){openGate();return}const o=e.target.closest('[data-id]');if(o)openDetail(+o.dataset.id)});
 
@@ -464,12 +542,12 @@ $('#gateForm').addEventListener('submit',async e=>{
   e.preventDefault();const biz=$('#gBiz').value.trim(),email=$('#gEmail').value.trim(),code=$('#gCode').value;
   if(!biz||!email){$('#gateErr').textContent=t('gNeed');return}
   if(await sha(code)!==VENDOR_CODE_HASH){$('#gateErr').textContent=t('gBad');return}
-  ss.set(VENDOR_SESSION_KEY,'1');ss.set('signatureVendorBusiness',biz);ss.set('signatureVendorEmail',email);$('#gCode').value='';$('#gate').close();
+  rememberLogin();ss.set('signatureVendorBusiness',biz);ss.set('signatureVendorEmail',email);$('#gCode').value='';$('#gate').close();
   fetch(ENDPOINT,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({businessName:biz,email,catalog:'Signature Vendor Catalog'})}).catch(()=>{});
   updateAuth();renderGrid();if($('#detail').open&&current)openDetail(current.id,true);toast(t('welcome'));
 });
 function updateAuth(){const on=loggedIn();$('#authA').textContent=on?'':t('loginA');$('#authB').textContent=on?t('logout'):t('loginB');$('#authBtn').setAttribute('aria-pressed',String(on))}
-$('#authBtn').onclick=()=>{if(loggedIn()){ss.del(VENDOR_SESSION_KEY);if(state.sort==='plo'||state.sort==='phi'){state.sort='featured';$('#sort').value='featured'}updateAuth();renderGrid()}else openGate()};
+$('#authBtn').onclick=()=>{if(loggedIn()){forgetLogin();if(state.sort==='plo'||state.sort==='phi'){state.sort='featured';$('#sort').value='featured'}updateAuth();renderGrid()}else openGate()};
 
 /* ---------- order ---------- */
 const safeQty=v=>Math.max(1,Math.min(999,Math.floor(Number(v)||1)));
@@ -507,7 +585,7 @@ function readHash(){let h='';try{h=decodeURIComponent(location.hash.slice(1))}ca
   if(m[1]==='item'){const p=P.find(x=>x.name===m[2]);if(p)requestAnimationFrame(()=>openDetail(p.id))}}
 window.addEventListener('hashchange',()=>{readHash();render()});
 
-readHash();applyLang();
+setView(ls.get(VIEW_KEY)==='1');readHash();applyLang();
 })();
 </script>
 </body>

@@ -263,6 +263,35 @@
       .contact-grid{gap:16px}
       .contact-item a,.contact-item address{font-size:16px}
     }
+
+    /* easy-reading phone layer */
+    .callbar{display:none}
+    @media(max-width:640px){
+      body{font-size:17px}
+      .label{font-size:12px;letter-spacing:.08em}
+      .hero .label{letter-spacing:.06em}
+      .lede{font-size:17px}
+      .btn{min-height:52px;font-size:15px;letter-spacing:.06em}
+      .hero .btn-line,.vendors .btn-line{min-height:48px;font-size:15px}
+      .facts span{font-size:13px;letter-spacing:.02em}
+      .nav-links a{font-size:13px;letter-spacing:.06em}
+      .langs button{min-height:40px;padding:8px 12px;font-size:13px;letter-spacing:0}
+      .mark-text b{font-size:17px}
+      .sec-head p{font-size:16px}
+      .trend h3{font-size:20px}
+      .trend p{font-size:16px}
+      .picks a{min-height:44px;padding:0 14px;font-size:14px;letter-spacing:.02em}
+      .style-meta b{font-size:16px}
+      .steps b{font-size:18px}.steps p{font-size:16px}
+      .contact-item a,.contact-item address{font-size:18px}
+      .contact-item small{font-size:15px}
+      .salecard-list b{font-size:15px;letter-spacing:.08em}
+      .callbar{display:grid;grid-template-columns:1fr 1fr;position:fixed;left:0;right:0;bottom:0;z-index:30;background:var(--ink);padding:8px max(8px,env(safe-area-inset-right,0px)) calc(8px + env(safe-area-inset-bottom,0px)) max(8px,env(safe-area-inset-left,0px));gap:8px}
+      .callbar a{display:flex;align-items:center;justify-content:center;gap:8px;min-height:52px;background:var(--ivory);color:var(--ink);text-decoration:none;font:600 16px/1.1 var(--sans);font-variant-numeric:tabular-nums}
+      .callbar a+a{background:transparent;color:var(--ivory);border:1px solid var(--gold-on-ink)}
+      .callbar b{font-weight:700}
+      body{padding-bottom:calc(68px + env(safe-area-inset-bottom,0px))}
+    }
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.style img{transition:none}}
   </style>
 </head>
@@ -281,7 +310,7 @@
           <a href="#vendors" data-i="navVendors">FOR VENDORS</a>
           <a href="#contact" data-i="navContact">CONTACT</a>
         </div>
-        <div class="langs" aria-label="Language"><button id="ko" type="button">KR</button><button id="en" class="on" type="button">EN</button></div>
+        <div class="langs" aria-label="Language"><button id="ko" type="button">한국어</button><button id="en" class="on" type="button">EN</button></div>
       </nav>
     </div>
   </header>
@@ -408,10 +437,12 @@
     </div>
   </footer>
 
+  <nav class="callbar" aria-label="Contact"><a href="tel:+17187865516"><b data-i="callLab">Call</b> 718-786-5516</a><a href="sms:+16463399472"><b data-i="textLab">Text</b> 646-339-9472</a></nav>
+
   <script>
     const COPY={
-      en:{saleLabel:'Vendor sale · HD Lace',saleTitle:'Two styles,',saleTitleEm:'now $15.',saleCta:'SEE THE SALE',saleBar:'VENDOR SALE — GALAXY 3 &amp; CLICK-2 NOW $15',navStyles:'COLLECTION',navVendors:'FOR VENDORS',navContact:'CONTACT',heritage:'Signature Looks, Inc. — Wholesale since 2005',headline:'Styles that sell.',headlineEm:'Colors they ask for.',tagline:'Signature Collection synthetic wigs for beauty supply stores. Every style and color, wholesale pricing for approved vendors.',explore:'VIEW THE COLLECTION',vendorInquiry:'NEW VENDOR INQUIRY',factYears:'YEARS IN WIG WHOLESALE',factFounded:'FOUNDED IN NEW YORK',factVendor:'VENDOR-ONLY PRICING',newArrival:'NEW ARRIVAL — ESSENSE',newArrivalNote:'QUEEN COLLECTION',stylesEyebrow:'The Collection',stylesTitle:'Shop by type',stylesIntro:'Browse every style and color without prices. Approved vendors sign in inside the catalog to see wholesale pricing.',sLace:'Lace front',sEveryday:'Everyday wigs',sHalf:'Half wigs',sCrochet:'Crochet &amp; add-on',factStyles:"STYLES IN THE LINE",sPony:"Ponytails",navTrends:"SEASON REPORT",tNew:"NEW",tStock:"STOCK THESE",trendsEyebrow:"Season report · Holiday 2026",trendsTitle:"What your customers will ask for",trendsIntro:"Five looks leading fall–winter 2026, and the Signature styles that answer each one.",trendsNote:"Based on fall–winter 2026 fashion and salon press. Updated monthly.",t1h:"The bixie and short pixie",t1p:"Half bob, half pixie. The short cut the fashion press named the look of 2026.",t2h:"The sleek bob",t2p:"Blunt, glossy and chin-to-shoulder. French and soft bobs top this winter’s cut lists.",t3h:"Big-volume curls",t3p:"’90s-style volume is back as the most-requested salon look. Full, rounded curls sell it.",t4h:"The holiday ponytail",t4p:"Sleek low ponies and bubble ponies for party season. New drawstring ponytails, in six textures.",t5h:"Warm color over jet black",t5p:"Chocolate, copper and burgundy are this fall’s leading shades on deeper skin tones.",sView:'VIEW →',vendorsEyebrow:'For Beauty Supply Retailers',vendorsTitle:'How ordering works',vendorsIntro:'Already a Signature account? Use your vendor code. New store? Send us a short note and we will set you up.',step1:'Browse the collection',step1p:'Every style, length, and color is open to view — no login needed.',step2:'Sign in for pricing',step2p:'Enter your business name and vendor code to see wholesale prices.',step3:'Send your order',step3p:'Add styles and colors to your order. We confirm stock and colors by email.',openCatalog:'OPEN THE CATALOG',contactTitle:'Signature Looks, Inc.',contactEm:"New York, since 2005.",email:'Orders &amp; Inquiries',emailNote:'For orders, stock, and color confirmation.',telephone:'Telephone',textNote:'Text 646-339-9472 for quick questions.',office:'New York Office',instagram:'Instagram',instagramNote:'New styles and catalog updates.',baseNote:'WHOLESALE ONLY · NEW YORK SINCE 2005'},
-      ko:{saleLabel:'거래처 세일 · HD 레이스',saleTitle:'두 가지 스타일,',saleTitleEm:'지금 $15.',saleCta:'세일 보기',saleBar:'거래처 세일 — GALAXY 3 · CLICK-2 지금 $15',navStyles:'컬렉션',navVendors:'거래처 안내',navContact:'연락처',heritage:'Signature Looks, Inc. — 2005년부터 도매',headline:'잘 팔리는 스타일,',headlineEm:'손님이 찾는 색상.',tagline:'뷰티서플라이 매장을 위한 Signature Collection 인조모 위그. 모든 스타일과 색상을 볼 수 있고, 승인된 거래처는 도매가를 확인할 수 있습니다.',explore:'컬렉션 보기',vendorInquiry:'신규 거래처 문의',factYears:'년 이상 위그 도매',factFounded:'뉴욕에서 설립',factVendor:'거래처 전용 도매가',newArrival:'신제품 — ESSENSE',newArrivalNote:'QUEEN 컬렉션',stylesEyebrow:'컬렉션',stylesTitle:'종류별로 보기',stylesIntro:'모든 스타일과 색상을 가격 없이 둘러보실 수 있습니다. 승인된 거래처는 카탈로그 안에서 로그인 후 도매가를 확인합니다.',sLace:'레이스 프런트',sEveryday:'데일리 가발',sHalf:'하프 위그',sCrochet:'크로셰 · 붙임머리',factStyles:"개 스타일 보유",sPony:"포니테일",navTrends:"시즌 리포트",tNew:"신제품",tStock:"추천 제품",trendsEyebrow:"시즌 리포트 · 2026 연말",trendsTitle:"이번 시즌, 손님이 찾을 스타일",trendsIntro:"2026 가을·겨울을 이끄는 다섯 가지 룩과, 각각에 맞는 시그니처 스타일입니다.",trendsNote:"2026 가을·겨울 패션·헤어 매체 기준. 매달 업데이트합니다.",t1h:"빅시 · 숏 픽시",t1p:"보브와 픽시의 중간. 패션 매체가 2026년의 룩으로 꼽은 숏컷입니다.",t2h:"슬릭 보브",t2p:"일자로 떨어지는 윤기 있는 보브. 올겨울 커트 트렌드 상위권입니다.",t3h:"볼륨 컬",t3p:"90년대식 풍성한 볼륨이 미용실에서 가장 많이 찾는 룩으로 돌아왔습니다.",t4h:"연말 포니테일",t4p:"파티 시즌의 슬릭 로우 포니와 버블 포니. 신제품 드로스트링 포니테일 6종.",t5h:"블랙 대신 따뜻한 컬러",t5p:"초콜릿 브라운, 코퍼, 버건디가 올가을 가장 주목받는 컬러입니다.",sView:'보기 →',vendorsEyebrow:'뷰티서플라이 매장 안내',vendorsTitle:'주문 방법',vendorsIntro:'기존 거래처는 거래처 코드로 로그인하세요. 신규 매장은 이메일로 간단히 문의 주시면 안내해 드립니다.',step1:'컬렉션 둘러보기',step1p:'모든 스타일·길이·색상을 로그인 없이 볼 수 있습니다.',step2:'로그인 후 가격 확인',step2p:'업체명과 거래처 코드를 입력하면 도매가가 보입니다.',step3:'주문 보내기',step3p:'스타일과 색상을 담아 주문하시면, 재고와 색상을 이메일로 확인해 드립니다.',openCatalog:'카탈로그 열기',contactTitle:'Signature Looks, Inc.',contactEm:"뉴욕, 2005년부터.",email:'주문 및 제품 문의',emailNote:'주문·재고·색상 확인은 이메일로 문의해 주세요.',telephone:'회사 전화',textNote:'간단한 문의는 646-339-9472로 문자 주세요.',office:'뉴욕 오피스',instagram:'인스타그램',instagramNote:'신제품과 카탈로그 소식.',baseNote:'도매 전용 · 뉴욕 2005년 설립'}
+      en:{callLab:'Call',textLab:'Text',saleLabel:'Vendor sale · HD Lace',saleTitle:'Two styles,',saleTitleEm:'now $15.',saleCta:'SEE THE SALE',saleBar:'VENDOR SALE — GALAXY 3 &amp; CLICK-2 NOW $15',navStyles:'COLLECTION',navVendors:'FOR VENDORS',navContact:'CONTACT',heritage:'Signature Looks, Inc. — Wholesale since 2005',headline:'Styles that sell.',headlineEm:'Colors they ask for.',tagline:'Signature Collection synthetic wigs for beauty supply stores. Every style and color, wholesale pricing for approved vendors.',explore:'VIEW THE COLLECTION',vendorInquiry:'NEW VENDOR INQUIRY',factYears:'YEARS IN WIG WHOLESALE',factFounded:'FOUNDED IN NEW YORK',factVendor:'VENDOR-ONLY PRICING',newArrival:'NEW ARRIVAL — ESSENSE',newArrivalNote:'QUEEN COLLECTION',stylesEyebrow:'The Collection',stylesTitle:'Shop by type',stylesIntro:'Browse every style and color without prices. Approved vendors sign in inside the catalog to see wholesale pricing.',sLace:'Lace front',sEveryday:'Everyday wigs',sHalf:'Half wigs',sCrochet:'Crochet &amp; add-on',factStyles:"STYLES IN THE LINE",sPony:"Ponytails",navTrends:"SEASON REPORT",tNew:"NEW",tStock:"STOCK THESE",trendsEyebrow:"Season report · Holiday 2026",trendsTitle:"What your customers will ask for",trendsIntro:"Five looks leading fall–winter 2026, and the Signature styles that answer each one.",trendsNote:"Based on fall–winter 2026 fashion and salon press. Updated monthly.",t1h:"The bixie and short pixie",t1p:"Half bob, half pixie. The short cut the fashion press named the look of 2026.",t2h:"The sleek bob",t2p:"Blunt, glossy and chin-to-shoulder. French and soft bobs top this winter’s cut lists.",t3h:"Big-volume curls",t3p:"’90s-style volume is back as the most-requested salon look. Full, rounded curls sell it.",t4h:"The holiday ponytail",t4p:"Sleek low ponies and bubble ponies for party season. New drawstring ponytails, in six textures.",t5h:"Warm color over jet black",t5p:"Chocolate, copper and burgundy are this fall’s leading shades on deeper skin tones.",sView:'VIEW →',vendorsEyebrow:'For Beauty Supply Retailers',vendorsTitle:'How ordering works',vendorsIntro:'Already a Signature account? Use your vendor code. New store? Send us a short note and we will set you up.',step1:'Browse the collection',step1p:'Every style, length, and color is open to view — no login needed.',step2:'Sign in for pricing',step2p:'Enter your business name and vendor code to see wholesale prices.',step3:'Send your order',step3p:'Add styles and colors to your order. We confirm stock and colors by email.',openCatalog:'OPEN THE CATALOG',contactTitle:'Signature Looks, Inc.',contactEm:"New York, since 2005.",email:'Orders &amp; Inquiries',emailNote:'For orders, stock, and color confirmation.',telephone:'Telephone',textNote:'Text 646-339-9472 for quick questions.',office:'New York Office',instagram:'Instagram',instagramNote:'New styles and catalog updates.',baseNote:'WHOLESALE ONLY · NEW YORK SINCE 2005'},
+      ko:{callLab:'전화',textLab:'문자',saleLabel:'거래처 세일 · HD 레이스',saleTitle:'두 가지 스타일,',saleTitleEm:'지금 $15.',saleCta:'세일 보기',saleBar:'거래처 세일 — GALAXY 3 · CLICK-2 지금 $15',navStyles:'컬렉션',navVendors:'거래처 안내',navContact:'연락처',heritage:'Signature Looks, Inc. — 2005년부터 도매',headline:'잘 팔리는 스타일,',headlineEm:'손님이 찾는 색상.',tagline:'뷰티서플라이 매장을 위한 Signature Collection 인조모 위그. 모든 스타일과 색상을 볼 수 있고, 승인된 거래처는 도매가를 확인할 수 있습니다.',explore:'컬렉션 보기',vendorInquiry:'신규 거래처 문의',factYears:'년 이상 위그 도매',factFounded:'뉴욕에서 설립',factVendor:'거래처 전용 도매가',newArrival:'신제품 — ESSENSE',newArrivalNote:'QUEEN 컬렉션',stylesEyebrow:'컬렉션',stylesTitle:'종류별로 보기',stylesIntro:'모든 스타일과 색상을 가격 없이 둘러보실 수 있습니다. 승인된 거래처는 카탈로그 안에서 로그인 후 도매가를 확인합니다.',sLace:'레이스 프런트',sEveryday:'데일리 가발',sHalf:'하프 위그',sCrochet:'크로셰 · 붙임머리',factStyles:"개 스타일 보유",sPony:"포니테일",navTrends:"시즌 리포트",tNew:"신제품",tStock:"추천 제품",trendsEyebrow:"시즌 리포트 · 2026 연말",trendsTitle:"이번 시즌, 손님이 찾을 스타일",trendsIntro:"2026 가을·겨울을 이끄는 다섯 가지 룩과, 각각에 맞는 시그니처 스타일입니다.",trendsNote:"2026 가을·겨울 패션·헤어 매체 기준. 매달 업데이트합니다.",t1h:"빅시 · 숏 픽시",t1p:"보브와 픽시의 중간. 패션 매체가 2026년의 룩으로 꼽은 숏컷입니다.",t2h:"슬릭 보브",t2p:"일자로 떨어지는 윤기 있는 보브. 올겨울 커트 트렌드 상위권입니다.",t3h:"볼륨 컬",t3p:"90년대식 풍성한 볼륨이 미용실에서 가장 많이 찾는 룩으로 돌아왔습니다.",t4h:"연말 포니테일",t4p:"파티 시즌의 슬릭 로우 포니와 버블 포니. 신제품 드로스트링 포니테일 6종.",t5h:"블랙 대신 따뜻한 컬러",t5p:"초콜릿 브라운, 코퍼, 버건디가 올가을 가장 주목받는 컬러입니다.",sView:'보기 →',vendorsEyebrow:'뷰티서플라이 매장 안내',vendorsTitle:'주문 방법',vendorsIntro:'기존 거래처는 거래처 코드로 로그인하세요. 신규 매장은 이메일로 간단히 문의 주시면 안내해 드립니다.',step1:'컬렉션 둘러보기',step1p:'모든 스타일·길이·색상을 로그인 없이 볼 수 있습니다.',step2:'로그인 후 가격 확인',step2p:'업체명과 거래처 코드를 입력하면 도매가가 보입니다.',step3:'주문 보내기',step3p:'스타일과 색상을 담아 주문하시면, 재고와 색상을 이메일로 확인해 드립니다.',openCatalog:'카탈로그 열기',contactTitle:'Signature Looks, Inc.',contactEm:"뉴욕, 2005년부터.",email:'주문 및 제품 문의',emailNote:'주문·재고·색상 확인은 이메일로 문의해 주세요.',telephone:'회사 전화',textNote:'간단한 문의는 646-339-9472로 문자 주세요.',office:'뉴욕 오피스',instagram:'인스타그램',instagramNote:'신제품과 카탈로그 소식.',baseNote:'도매 전용 · 뉴욕 2005년 설립'}
     };
     function setLanguage(lang){
       document.documentElement.lang=lang;
@@ -419,11 +450,11 @@
       document.getElementById('ko').classList.toggle('on',lang==='ko');
       document.getElementById('en').classList.toggle('on',lang==='en');
       document.title=lang==='ko'?'시그니처 컬렉션 — 뉴욕 2005':'Signature Looks, Inc. — Signature Collection Wholesale Wigs, New York';
-      try{localStorage.setItem('signatureLang',lang)}catch(e){}
+      try{localStorage.setItem('signatureLang',lang);localStorage.setItem('signatureCatalogLang',lang)}catch(e){}
     }
     document.getElementById('ko').addEventListener('click',()=>setLanguage('ko'));
     document.getElementById('en').addEventListener('click',()=>setLanguage('en'));
-    try{if(localStorage.getItem('signatureLang')==='ko')setLanguage('ko')}catch(e){}
+    try{const v=localStorage.getItem('signatureLang')||localStorage.getItem('signatureCatalogLang');if(v==='ko')setLanguage('ko');else if(!v&&(navigator.languages||[navigator.language]).some(l=>/^ko/i.test(l)))setLanguage('ko')}catch(e){}
   </script>
   <script src="monthly-best.js"></script>
 </body>

@@ -53,7 +53,7 @@ const MONTHLY_BEST = {
   .mbest-item,.mbest-item:first-child{flex:0 0 58%;scroll-snap-align:start}
   .mbest-item:first-child .mbest-photo{aspect-ratio:3/4;height:auto}
   .mbest-meta{grid-template-columns:auto 1fr;gap:2px 8px;margin-top:10px;padding-top:10px}.mbest-meta em{display:none}
-  .mbest-meta i,.mbest-item:first-child .mbest-meta i{font-size:20px}.mbest-meta b,.mbest-item:first-child .mbest-meta b{font-size:14px}.mbest-meta small{font-size:12px}
+  .mbest-meta i,.mbest-item:first-child .mbest-meta i{font-size:22px}.mbest-meta b,.mbest-item:first-child .mbest-meta b{font-size:16px}.mbest-meta small{font-size:14px}
   .mbest-all{margin-top:24px}.mbest-all a,.mbest-all button{min-height:44px;padding:0;border:0;text-decoration:underline;text-underline-offset:4px;background:none!important;color:var(--ink)!important}}
   @media(prefers-reduced-motion:reduce){.mbest-photo img{transition:none}}`;
 
