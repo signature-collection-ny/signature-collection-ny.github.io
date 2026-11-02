@@ -5,13 +5,13 @@
      img는 cards/ 폴더의 사진 파일명
    ============================================================ */
 const MONTHLY_BEST = {
-  month: { en: 'October 2026', ko: '2026년 10월' },
+  month: { en: 'November 2026', ko: '2026년 11월' },
   items: [
-    { name: 'ISABEL',   img: 'cards/36-isabel-approved.jpg',   en: 'Long layered body wave', ko: '롱 레이어드 바디 웨이브' },
-    { name: 'QUEEN',    img: 'cards/44-queen-approved.jpg',    en: 'Shoulder-length tight curl', ko: '어깨 기장 타이트 컬' },
-    { name: 'JANE',     img: 'cards/20-jane-approved.jpg',     en: 'Long silky straight', ko: '롱 실키 스트레이트' },
-    { name: 'DESIGN A', img: 'cards/21-design-a-approved.jpg', en: 'Blunt bob with full bang', ko: '일자 보브 + 풀뱅' },
-    { name: 'ASSIST',   img: 'cards/42-assist-approved.jpg',   en: 'Short layered pixie', ko: '숏 레이어드 픽시' }
+    { name: 'WDS-4',  img: 'cards/58-wds-4-approved.jpg',  en: 'Extra-long spiral curl drawstring ponytail', ko: '엑스트라 롱 스파이럴 컬 포니테일' },
+    { name: 'ISABEL', img: 'cards/36-isabel-approved.jpg', en: 'Long layered body wave', ko: '롱 레이어드 바디 웨이브' },
+    { name: 'QUEEN',  img: 'cards/44-queen-approved.jpg',  en: 'Shoulder-length tight curl', ko: '어깨 기장 타이트 컬' },
+    { name: 'JANE',   img: 'cards/20-jane-approved.jpg',   en: 'Long silky straight', ko: '롱 실키 스트레이트' },
+    { name: 'LEMON',  img: 'cards/11-lemon-approved.jpg',  en: 'Short sleek pixie', ko: '숏 슬릭 픽시' }
   ]
 };
 
