@@ -310,7 +310,7 @@
           <a href="#vendors" data-i="navVendors">FOR VENDORS</a>
           <a href="#contact" data-i="navContact">CONTACT</a>
         </div>
-        <div class="langs" aria-label="Language"><button id="ko" type="button">한국어</button><button id="en" class="on" type="button">EN</button></div>
+        <div class="langs" aria-label="Language"><button id="en" class="on" type="button">EN</button><button id="ko" type="button">한국어</button></div>
       </nav>
     </div>
   </header>
@@ -454,7 +454,7 @@
     }
     document.getElementById('ko').addEventListener('click',()=>setLanguage('ko'));
     document.getElementById('en').addEventListener('click',()=>setLanguage('en'));
-    try{const v=localStorage.getItem('signatureLang')||localStorage.getItem('signatureCatalogLang');if(v==='ko')setLanguage('ko');else if(!v&&(navigator.languages||[navigator.language]).some(l=>/^ko/i.test(l)))setLanguage('ko')}catch(e){}
+    try{const v=localStorage.getItem('signatureLang')||localStorage.getItem('signatureCatalogLang');if(v==='ko')setLanguage('ko')}catch(e){}
   </script>
   <script src="monthly-best.js"></script>
 </body>
