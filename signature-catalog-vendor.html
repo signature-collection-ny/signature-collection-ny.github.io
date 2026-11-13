@@ -131,6 +131,7 @@ dialog::backdrop{background:rgba(23,21,17,.55)}
 @media (min-width:821px){#detailSheet{width:min(calc(75vh + 520px),100vw);width:min(calc(75dvh + 520px),100vw)}.dt{grid-template-columns:min(75vh,60%) minmax(0,1fr);grid-template-columns:min(75dvh,60%) minmax(0,1fr)}}
 .dt .ph{aspect-ratio:auto;position:sticky;top:0;height:100vh;height:100dvh;min-height:520px;background:#efe8de}
 .dt .ph img{object-fit:contain;object-position:center bottom}
+@media (min-width:821px) and (max-aspect-ratio:5/4){.dt{align-items:start}.dt .ph{height:auto;min-height:0;aspect-ratio:3/4}}
 .dt-body{padding:56px 40px 40px;display:grid;gap:20px;align-content:start;min-width:0}
 .dt-body h2{margin:0;font:500 40px/1 var(--sans);letter-spacing:.03em}
 .dt-body .sub{margin:-8px 0 0;color:var(--muted)}
@@ -310,6 +311,7 @@ html[lang=ko] .lab,html[lang=ko] .types button,html[lang=ko] .tbtn,html[lang=ko]
   body.big .nm{font-size:22px}
   body.big .pr b{font-size:28px}
 }
+@media (max-width:400px){.mark b{font-size:13px;letter-spacing:.08em}.mark small{letter-spacing:.22em}.tbtn{padding:0 10px}.langs button{min-width:44px;padding:0 8px}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 </head>
