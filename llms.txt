@@ -1,0 +1,9 @@
+# Signature Collection (Signature Looks, Inc.)
+
+> New York wholesaler of synthetic wigs for beauty supply stores, founded in 2005. Wholesale only; not sold to the public. 61 styles: lace front wigs, everyday wigs, half wigs, drawstring ponytails, crochet and add-on styles.
+
+- [Wholesale program and full style list](https://signature-collection-ny.github.io/wholesale-wigs.html): what the line carries, how a beauty supply store opens a vendor account, all 61 styles
+- [Online catalog](https://signature-collection-ny.github.io/signature-catalog-vendor.html): every style and color; wholesale prices after vendor sign-in
+- [Home](https://signature-collection-ny.github.io/): season report, monthly picks, contact
+
+Contact: Jae@signaturelooksinc.com, 718-786-5516, 36-31 33rd Street, Long Island City, NY 11106
